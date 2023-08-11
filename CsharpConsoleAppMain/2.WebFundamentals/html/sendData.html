@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<form action="" method="" id="myform">
+    Name:<input type="text" name="name" id="name">
+    Age:<input type="text" name="age" id="age">
+    message:<textarea name="message" id="message"></textarea>
+    <input type="submit" value="Send">
+</form>
+
+<script>
+    $('#myform').submit(function() {
+
+        var name = $('#name').val();
+        var age = $('#age').val();
+        var message = $('#message').val();
+
+        $.ajax({
+            type: "POST",
+            url: "form.php",
+            data: "name=" + name + "&age=" + age + "&message=" + message,
+        }).done(function(msg) {
+            alert("Data Saved: " + msg);
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>About</title>
+<!--<script type=text/javascript>-->
+</script>
+<style>
+    body {
+        background-image: url(images/car2.jpg);
+        /*background-size: ;*/
+        /* top left */
+        /*background-repeat: no-repeat; /* repeat-x, repeat-y */
+    }
+
+    #wrapper {
+        height: 1250px;
+        margin: 0 auto;
+        width: 900px;
+    }
+
+    #banner {
+        background-color: gray;
+        display: table-cell;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        width: 900px;
+    }
+
+    #nav {
+        background-color: gold;
+        border: 1px solid black;
+        color: white;
+        height: 50px;
+        text-decoration: none;
+        width: 900px;
+    }
+
+    div.home:hover {
+        background-color: white;
+        color: yellow;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    div.faq:hover {
+        background-color: #fff;
+        color: yellow;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    div.about:hover {
+        background-color: #fff;
+        color: yellow;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    div.careers:hover {
+        background-image: url("images/pic5.png");
+        color: yellow;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    div.contact:hover {
+        background-color: #fff;
+        background-image: url("images/pic1.png");
+        color: yellow;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .home {
+        background-image: url("images/pic1.png");
+        color: white;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        text-decoration: none;
+        width: 180px;
+    }
+
+    .faq {
+        background-image: url("images/pic2.png");
+        color: white;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        text-decoration: none;
+        width: 180px;
+    }
+
+    .careers {
+        background-image: url("images/pic3.png");
+        color: white;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        text-decoration: none;
+        width: 180px;
+    }
+
+    .about {
+        background-image: url("images/pic4.png");
+        color: white;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        text-decoration: none;
+        width: 180px;
+    }
+
+    .contact {
+        background-image: url("images/pic5.png");
+        color: white;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        text-decoration: none;
+        width: 180px;
+    }
+
+    #contentwrapper {
+        background-color: none;
+        height: 1000;
+        width: 900;
+    }
+
+    #content {
+        -moz-column-count: 3; /* firefox */
+        -webkit-column-count: 3; /* safari and chrome*/
+        background-color: silver;
+        column-count: 3;
+        float: left;
+        height: 1000px;
+        width: 750px;
+    }
+
+    #rightpane {
+        background-color: yellow;
+        float: left;
+        height: 1000px;
+        width: 150px;
+    }
+
+    #footer {
+        background-color: royalblue;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        width: 900px;
+    }
+
+    .imgleft {
+        float: left;
+        padding-right: 5px;
+    }
+
+    .imgright {
+        float: right;
+        padding-right: 5px;
+    }
+
+    p::before {
+        content: url("../Test/icons/icon.png");
+        padding-right: 5px;
+    }
+
+    p::after {
+        content: url("../Test/icons/icon.png");
+        padding-left: 5px;
+    }
+
+    p::first-line {
+        color: blue;
+        font-variant: small-caps;
+    }
+
+    P::first-letter {
+        color: gold;
+        font-size: 30px;
+    }
+
+    a:link {
+        color: white;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    nav ul ul { display: none; }
+
+    nav ul li:hover > ul { display: block; }
+
+    #moveMe {
+        -ms-animation: mymove 5s infinite;
+        -webkit-animation: mymove 5s infinite; /* for safari, chrome, opera */
+        animation: mymove 5s infinite;
+        /*
+                background: linear-gradient(red,yellow,blue);
+                background: -webkit-linear-gradient(red,yellow,blue);
+                background: -moz-linear-gradient(red,yellow,blue);
+                background: -ms-linear-gradient(red,yellow,blue);
+                background: -o-linear-gradient(red,yellow,blue);*/
+
+        background: -webkit-linear-gradient(left, #ffd800 0%, #ff6a00 50%, #0000ff 100%);
+        background: -moz-linear-gradient(left, #ffd800 0%, #ff6a00 50%, #0000ff 100%);
+        background: -o-linear-gradient(left, #ffd800 0%, #ff6a00 50%, #0000ff 100%);
+        background: linear-gradient(left, #ffd800 0%, #ff6a00 50%, #0000ff 100%);
+        box-shadow: 10px 10px 15px gray;
+        height: 100px;
+        position: relative;
+        width: 100px;
+    }
+
+    @keyframes mymove/* IE 11 & firefox */ {
+        from {
+            background-color: grey;
+            height: 50;
+            left: 0px;
+            top: 0px;
+            transform: rotate(0deg);
+            width: 50px;
+        }
+
+        to {
+            background-color: black;
+            height: 100px;
+            left: 300px;
+            top: 50px;
+            transform: rotate(90deg);
+            width: 100px;
+        }
+    }
+
+    @-ms-keyframes mymove/* IE 9 & 10 */ {
+        from {
+            background-color: grey;
+            height: 50;
+            left: 0px;
+            top: 0px;
+            transform: rotate(0deg);
+            width: 50px;
+        }
+
+        to {
+            background-color: black;
+            height: 100px;
+            left: 300px;
+            top: 50px;
+            transform: rotate(90deg);
+            width: 100px;
+        }
+    }
+
+    @-webkit-keyframes mymove/* for safari, chrome, opera */ {
+        from {
+            background-color: grey;
+            height: 50;
+            left: 0px;
+            top: 0px;
+            transform: rotate(0deg);
+            width: 50px;
+        }
+
+        to {
+            background-color: black;
+            height: 100px;
+            left: 300px;
+            top: 50px;
+            transform: rotate(90deg);
+            width: 100px;
+        }
+    }
+
+    #moveYou {
+        -ms-animation: moveDIV 5s infinite;
+        -webkit-animation: moveDIV 5s infinite; /* for safari, chrome, opera */
+        animation: moveDIV 5s infinite;
+        box-shadow: 10px 10px 15px gray;
+        height: 155px;
+        position: relative;
+        width: 250px;
+    }
+
+    @keyframes moveDIV {
+        0% { left: 0px; }
+
+        25% { left: 150px }
+
+        50% { left: 300px; }
+
+        75% { left: 150px }
+
+        100% { left: 0px; }
+    }
+
+    @-ms-keyframes moveDIV {
+        0% { left: 0px; }
+
+        25% { left: 150px }
+
+        50% { left: 300px; }
+
+        75% { left: 150px }
+
+        100% { left: 0px; }
+    }
+
+    @-webkit-keyframes moveDIV {
+        0% { left: 0px; }
+
+        25% { left: 150px }
+
+        50% { left: 300px; }
+
+        75% { left: 150px }
+
+        100% { left: 0px; }
+    }
+
+    .shadowheading {
+        font-family: calibri;
+        font-size: 40px;
+        font-weight: bold;
+        text-shadow: 8px 3px 10px black;
+    }
+
+    #moveHim {
+        background: -webkit-radial-gradient(circle, red, yellow, blue);
+        background: -moz-radial-gradient(circle, red, yellow, blue);
+        background: -o-radial-gradient(circle, red, yellow, blue);
+        background: radial-gradient(circle, red, yellow, blue);
+        box-shadow: 10px 10px 15px gray;
+        height: 100px;
+        opacity: 0.50;
+        position: relative;
+        width: 100px;
+    }
+
+    .grad {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background: -webkit-linear-gradient(180deg, red, yellow);
+        background-clip: text;
+        font-family: calibri;
+        font-size: 40px;
+    }
+
+    /* h2{
+                font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 16px;
+            }
+            .wraparound
+            {
+                float: right;
+                margin-left: 20px;
+            }
+            .rotate
+            {
+                /* IE */
+
+    /*-ms-transform: rotate(-90deg);
+                /*crome, safari*/
+
+    /*-webkit-transform: rotate(-90deg);
+
+            }
+            #div1
+            {
+                width: 150px;
+                height: 150px;
+                text-align: center;
+                line-height: 150px;
+                background-color: yellow;
+                position: relative;
+                left: 0px;
+                top: 0px;
+                float: left;
+                transform:rotate(45deg);
+            }
+            #div2
+            {
+                width: 150px;
+                height: 150px;
+                text-align: center;
+                line-height: 150px;
+                background-color: yellow;
+                position: relative;
+                left: 50px;
+                top: 0px;
+                float: left;
+                transform:rotate(125deg);
+            }
+            #div3
+            {
+                width: 150px;
+                height: 150px;
+                text-align: center;
+                line-height: 150px;
+                background-color: yellow;
+                position: relative;
+                left: 0px;
+                top: 50px;
+                float: left;
+                transform:rotate(90deg);
+            }
+            #div4
+            {
+                width: 150px;
+                height: 150px;
+                text-align: center;
+                line-height: 150px;
+                background-color: yellow;
+                position: relative;
+                left: 50px;
+                top: 50px;
+                float: left;
+                transform:rotate()
+                /*z-index: -1;*/
+
+    /*puts behind objects
+            }
+            /*position: absolute;
+            position: fixed; */
+
+    /*
+            #overlap
+            {
+                position:absolute;
+            }
+            #dog
+            {
+                position: absolute;
+                ;
+            }
+            */
+
+    /* body
+            {
+                background-color: green;
+
+            }*/
+
+    p {
+        color: red;
+        font-size: 24px;
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: wavy underline;
+    }
+
+    /* adding your own font*/
+
+    @font-face {
+        font-family: Arial;
+        src: url();
+    }
+
+    h4 { font-family: Arial; }
+</style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="banner">Banner</div>
+
+    <div id="nav" ;>
+        <a href="#">
+            <div class="home">
+                <nav>
+                    <ul>
+                        <li>Home</li>
+                        <ul>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </a>
+        <a href="index.html">
+            <div class="faq">
+                <nav>
+                    <ul>
+                        <li>FAQ</li>
+                        <ul>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </a>
+
+        <a href="about.html">
+            <div class="about">
+                <nav>
+                    <ul>
+                        <li>ABOUT</li>
+                        <ul>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </a>
+
+        <a href="Drag and drop.html">
+            <div class="careers">
+                <nav>
+                    <ul>
+                        <li>CAREERS</li>
+                        <ul>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </a>
+        <a href="contact.html">
+            <div class="contact">
+                <nav>
+                    <ul>
+                        <li>CONTACT US</li>
+                        <ul>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                            <li>page 1</li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </a>
+    </div>
+
+    <div id="contentwrapper">
+        <div id="content">
+            Content
+            <br>
+            <div id="moveMe"></div>
+            <br>
+
+            <div id="moveYou">
+                <img src="images/dog.jpg" alt="dog" width="250" height="155">
+            </div>
+
+            <p>
+                <h1 class="shadowheading">What is Lorem Ipsum?</h1>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                <img class="imgright" src="../Test/images/dog.jpg" style="width: 150px;">
+                Why do we use it?
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page
+            </p>
+            <p>
+                editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+                <img class="imgleft" src="../Test/images/dog.jpg" style="width: 150px;">
+                Where does it come from?
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+            </p>
+            <p>
+                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+            </p>
+            <p>
+                <h1 class="shadowheading">Where can I get some?</h1>
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+            </p>
+            <br>
+            <div id="moveHim"></div>
+
+            <!--<div class="rotate" style="width: 300px; height: 200px; text-align: center; ">
+                <h2>Rotate</h2>
+            </div>
+            <br>
+            <img src="" id="dog" />
+            <p id="overlap">Dogs</p>
+            <br>-->
+            <!--border properties-->
+            <div style="border: none;">no border</div>
+            <div style="border: solid;">solid border</div>
+            <div style="border: red solid;">red border</div>
+            <div style="border: dotted;">dotted border</div>
+            <div style="border: double">double border</div>
+            <div style="border: groove;">groove border</div>
+            <div style="border: 6px solid;">thick border</div>
+            <div style="border-bottom: solid;">partial border</div>
+
+            <!--background images-->
+            <div style="background: url(../Test/images/dog.jpg);"></div>
+            <div style="background: url(../Test/images/dog.jpg); background-size: cover;"></div>
+            <div style="background: url(../Test/images/dog.jpg) no-repeat 0px 0px"></div>
+            <div style="background: url(../Test/images/dog.jpg) no-repeat center center"></div>
+            <div style="background: url(../Test/images/dog.jpg) no-repeat-y"></div>
+            <div style="background: url(../Test/images/dog.jpg) no-repeat-x"></div>
+
+            <!--html5 positioning-->
+            <div class="card" style="position: static;">Static Position</div>
+            <div class="card" style="left: 400px; position: absolute; top: 500px;">Absolute Position</div> <!--fixed to page-->
+            <div class="card" style="left: 800px; position: fixed; top: 500px;">Fixed Position</div> <!--gixed to screen-->
+            <div class="container">
+                <div class="card" style="left: 200px; position: relative; top: 200px;">Relative Position</div> <!--relative to div-->
+            </div>
+        </div>
+        <div id="rightpane">Right Pane</div>
+        <div id="footer" style="background-color: seagreen;">
+            <h1 class="grad">go to <a href="index.html">Index Page</a> </h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>

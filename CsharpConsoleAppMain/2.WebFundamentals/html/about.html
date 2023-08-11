@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="eng">
+<head>
+    <meta charset="utf-8"/>
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="C:\inetpub\wwwroot\CsharpConsoleAppMain.Net\WebFundamentals\styles\styles.css"/>
+
+    <script type="text/javascript">
+        //checking for geolocation
+        if (navigator.geolocation) {
+            alert("geolocation works");
+        } else {
+            alert("geolocation doesnt work");
+        }
+    </script>
+
+    <style>
+        .rotateBox {
+            -ms-transform: rotate(15deg); /*for IE 9 and higher */
+            -webkit-transform: rotate(15deg); /* for chrome, safari and opera*/
+            background-color: yellow;
+            font-family: calibri;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            transform: rotate(15deg); /*for IE11, firefox */
+            width: 150px;
+        }
+
+        #first {
+            height: 250px;
+            left: 525px;
+            position: absolute;
+            top: 150px;
+            width: 450px;
+        }
+
+        #AboutMovie {
+            height: 250px;
+            left: 450px;
+            position: absolute;
+            top: 400px;
+            width: 450px;
+        }
+
+        #button {
+            height: 30px;
+            left: 645px;
+            position: absolute;
+            top: 120px;
+            width: 450px;
+        }
+
+        #rotateBox {
+            left: 600px;
+            position: absolute;
+            top: 700px;
+        }
+
+        #learn {
+            left: 575px;
+            position: absolute;
+            text-align: center;
+            top: 900px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrapper">
+    <header></header>
+    <nav></nav>
+    <!--Add Structure here for banner, nav, and contents-->
+    <section>
+        <div id="Banner"></div>
+    </section>
+
+    <section>
+        <div>
+            <div id="Home">
+                <h1>HOME</h1>
+            </div>
+
+            <div id="About">
+                <h1>ABOUT</h1>
+            </div>
+
+            <div id="Contact">
+                <h1>CONTACT</h1>
+            </div>
+        </div>
+    </section>
+
+    <!--Content Section-->
+    <section>
+        <div id="Content">
+            <h2>CONTENT</h2>
+
+            <!--Adding classes to tags-->
+            <!--<p class="HTML5"></p>-->
+            <div id="button">
+                <button onClick="showImage()">Button</button>
+            </div>
+
+            <div id="first" style="display: none; height: 450px; width: 250px;">
+                <img src="http://w3codegenerator.com/img/sample-image/new_zealand-300x225.jpg"/>
+            </div>
+
+            <script>
+                const showImage = () => {
+                    document.getElementById("first").style.display = 'block';
+                }
+            </script>
+
+            <div id="AboutMovie">
+                <video width="450" height="250" controls>
+                    <source src="movie.mp4" type="video/mp4">
+                    <source src="movie.ogg" type="video/ogg">
+                    <source src="movie.avi" type="video/avi">
+                    your browser doenst support HTML5 video
+                </video>
+            </div>
+
+            <div id="rotateBox" class="rotateBox">Rotated with CSS</div>
+
+            <div id="learn">
+                <p>Learn about us here</p>
+                go to <a href="car3.html">car Page</a>
+                go to <a href="index.html">Home Page</a>
+            </div>
+        </div>
+    </section>
+
+    <!--Query Section-->
+    <!--<section>
+        <div id="querySelector">
+            <a href="http://Google.com">Google.com</a>
+            <a href="http://bing.com">Bing.com</a>
+            <a href="http://netflix.com">Netflix.com</a>
+            <br>
+            <button id="doit" onclick="doIt">Do It</button>
+            <br>
+        </div>
+    </section>-->
+    <!--Links Section-->
+    <section>
+        <div id="links">
+            <div id="Link1">
+                <a href="index.html">Home</a>
+            </div>
+            <div id="Link2">
+                <a href="xmlhttprequest.html">Google.com</a>
+            </div>
+            <div id="Link3">
+                <a href="about.html">About page</a>
+            </div>
+            <div id="Link4">
+                <a href="contact.html">Contact page</a>
+            </div>
+            <div id="Link5">
+                <a href="submitform.html">Submit Form</a>
+            </div>
+            <div id="Link6">
+                <a href="mailto:info@google.com?cc=sales@google.com&subject=Request for information&body=Yes, i'm intersted in recieving more information!">Send Mail</a>
+            </div>
+            <div id="Link7">
+                <a href="Drag and drop.html">draganddrop</a>
+            </div>
+            <div id="Link8">
+                <a href="media.html">media page</a>
+            </div>
+            <div id="Link9">
+                <a href="CSS.html">CSS style page</a>
+            </div>
+        </div>
+    </section>
+
+    <!--Artical Section-->
+    <section>
+        <div id="article">
+            <article>
+                <h1>Article</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetuer
+                    adipiscing elit. Donec odio. Quisque volutpat
+                    mattis eros. Nullam malesuada erat ut turpis.
+                    Suspendisse urna nibh, viverra non, semper
+                    suscipit, posuere a, pede.
+                </p>
+            </article>
+
+            <aside>
+                <h1>aside</h1>
+            </aside>
+        </div>
+    </section>
+
+    <!--Footer Section-->
+    <section>
+        <div id="footer">
+            <!--this section will contain footer and legal disclaimer-->
+            <footer>
+                <h1>Footer</h1>
+            </footer>
+        </div>
+    </section>
+</div>
+</body>
+</html>

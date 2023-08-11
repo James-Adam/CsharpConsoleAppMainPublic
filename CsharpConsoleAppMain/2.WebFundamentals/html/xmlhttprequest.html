@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <style>
+        a { display: block; }
+    </style>
+</head>
+<body>
+
+<h2>Using the XMLHttpRequest Object</h2>
+<!--Using the XMLHttpRequest Object-->
+<div id="demo">
+    <button type="button" onclick="loadXMLDoc()">Change Content</button>
+</div>
+
+<script>
+    function loadXMLDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML =
+                    this.responseText;
+            }
+        };
+        xhttp.open("GET", "../Test/xml/xmlhttp_info.txt", true);
+        xhttp.send();
+    }
+</script>
+
+<!--consuming xml-->
+<button type="button" onclick="loadDoc1()">Send Now</button>
+
+<p id="demo3"></p>
+
+<script>
+    function loadDoc1() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(this.responseText, "text/xml");
+                document.getElementById("demo3").innerHTML =
+                    xmlDoc.getElementsByTagName("firstName")[0].childNodes[0].nodeValue +
+                    " " +
+                    xmlDoc.getElementsByTagName("lastName")[0].childNodes[0].nodeValue;
+            }
+        };
+
+        xhttp.open("GET", "ping.xml");
+        xhttp.send();
+    }
+</script>
+
+<!--consuming JSON Data-->
+<button type="button" onclick="loadDoc2()">Send JSON</button>
+
+<p id="demo4"></p>
+
+<script>
+    function loadDoc2() {
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                document.getElementById("demo4").innerHTML =
+                    response.firstName + " " + response.lastName;
+            }
+        };
+
+        xhttp.open("GET", "ping.json");
+        xhttp.send();
+    }
+</script>
+
+<!--serialisation and deserialisation-->
+<form id="requestForm">
+    <input type="text" name="text1">
+    <input type="text" name="text2">
+</form>
+<button type="button" onclick="doSerialize()">Serialize</button>
+
+<div id="demo5"></div>
+
+<script>
+    function doSerialize() {
+        $('#demo5').html($('#requestForm').serialize());
+    }
+</script>
+
+<!--sending data with ajax-->
+<form id="requestForm1">
+    <input type="text" name="requestText" id="requestText">
+</form>
+
+<button type="button" onclick="sendDoc()">Send</button>
+
+<p id="demo6"></p>
+
+<script>
+    function sendDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo6").innerHTML =
+                    this.responseText;
+            }
+        };
+
+        xhttp.open("POST", "echo.aspx");
+        xhttp.setRequestHeader("Content-Type", "text/plain");
+        xhttp.send($('#requestText').val());
+
+    }
+</script>
+<!--
+<form method="post" action="echo.aspx">
+    First Name: <input type="text" name="fname"><br>
+    Last Name: <input type="text" name="lname"><br><br>
+    <input type="submit" value="Submit">
+</form>-->
+<!--Tracking Progress of Data-->
+<form id="requestForm2">
+    <input type="text" name="requestText1" id="requestText1">
+</form>
+
+<button type="button" onclick="sendDoc1()">Send</button>
+
+<p id="demo7"></p>
+
+<script>
+    function sendDoc1() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 1) {
+                console.log("open has been called");
+            }
+            if (this.readyState == 2) {
+                console.log("send has been called");
+            }
+            if (this.readyState == 3) {
+                console.log("downloading response");
+            }
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo7").innerHTML =
+                    this.responseText;
+            }
+        };
+
+        xhttp.open("GET", "echo.aspx?" + $('requestForm2').serialize());
+        //xhttp.setRequestHeader("Content-Type", "text/plain");
+        xhttp.send(); //$('#requestText1').val());
+
+    }
+</script>
+<hr>
+<!--processing Data with json-->
+<form id="requestForm3">
+    <input type="text" name="requestText2" id="requestText2">
+    <input type="text" name="requestText3" id="requestText3">
+</form>
+
+<button type="button" onclick="sendDoc2()">Send</button>
+
+<p id="demo8"></p>
+
+<script>
+    function sendDoc2() {
+        var request = JSON.stringify(objectifyForm($('#requestForm3').serializeArray()));
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 1) {
+                console.log("open has been called");
+            }
+            if (this.readyState == 2) {
+                console.log("send has been called");
+            }
+            if (this.readyState == 3) {
+                console.log("downloading response");
+            }
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                document.getElementById("demo8").innerHTML =
+                    response.requestText2 + " " + response.requestText3;
+            }
+        };
+
+        xhttp.open("POST", "echojson.aspx");
+
+        xhttp.send(request);
+
+    }
+
+    function objectifyForm(formArray) {
+        var returnArray = {};
+        for (var i = 0; i < formArray.length; i++) {
+            returnArray[formArray[i]['name']] = formArray[i]['value'];
+        }
+        return returnArray;
+
+    }
+</script>
+</body>
+</html>

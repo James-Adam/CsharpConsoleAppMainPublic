@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<books>
+
+	<book>
+		<title>Great Expectations</title>
+		<author>Charles Dickens</author>
+		<publisher>ACME Publishing</publisher>
+	</book>
+
+	<book>
+		<title>War and Peace</title>
+		<author>Leo Tolstoy</author>
+		<publisher>ACME Publishing</publisher>
+	</book>
+</books>

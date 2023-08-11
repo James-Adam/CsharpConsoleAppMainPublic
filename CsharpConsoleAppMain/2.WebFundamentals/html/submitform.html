@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;
+        charset=utf-8">
+    <title>Submit</title>
+    <script>
+        window.onload = function() {
+            var result = document.getElementById("result");
+        };
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                result.innerHTML = "Geolocation is not supported by this browser";
+            }
+        }
+
+        function showPosition(position) {
+            var output = "";
+            output += "Latitude: " + position.coords.latitude + "<br />";
+            output += "Longitude: " + position.coords.longitude + "<br />";
+            result.innerHTML = output;
+
+        }
+
+        var first, last, ofirst, olast;
+
+        window.onload = function() {
+            first = document.getElementById('first');
+            last = document.getElementById('last');
+            ofirst = document.getElementById('fnameOutput');
+            olast = document.getElementById('lnameOutput');
+            document.getElementById('storeData').addEventListener('click', storeData, false);
+            document.getElementById('retrieveData').addEventListener('click', retrieveData, false);
+        };
+
+        function storeData() {
+            sessionStorage.firstName = first.value;
+            sessionStorage.lastName = last.value;
+        }
+
+        function retrieveData() {
+            ofirst.innerHTML = sessionStorage.firstName;
+            olast.innerHTML = sessionStorage.lastName;
+        }
+    </script>
+
+    <script type="text/javascript">
+        function doIt() {
+            var result = document.querySelector(".text");
+            document.getElementById("output").innerHTML = result.innerHTML;
+        }
+    </script>
+    <style>
+        .text {
+            color: yellow;
+            font-family: arial;
+        }
+    </style>
+</head>
+<body>
+<br/>
+<div id="result"></div>
+<button onclick="getLocation()">Get Location</button>
+<br/>
+<br/>
+<span class="text">Which one will change?</span><br>
+<span class="text">what will it say?</span><br>
+<span class="text" id="output">who are you?</span><br>
+<button id="doIt" onclick="doIt()">See Results</button>
+<br/>
+
+<br/>
+<form action="formprocess/upload.php" method="post" enctype="multipart/form-data" autocomplete="on">
+    <label for="file">Filename:</label>
+    <input type="file" name="file" id="file"><br>
+
+    <input type="text" placeholder="First Name" required="required" autofocus/>
+    <input type="text" placeholder="Last Name" required="required"/>
+    <input type="email" placeholder="info@gmail.com" required="required" pattern="	^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+    <br>
+
+    <input type="submit" name="submit" value="submit">
+</form>
+
+<form action="formprocess/datalist.php" method="get">
+    <label>Please type/click a car brand</label>
+    <input list="cars" name="car">
+    <datalist id="cars">
+        <option value="audi">
+        <option value="BMW">
+        <option value="Porche">
+        <option value="Lambo">
+    </datalist>
+    <input type="submit" name="submit" value="submit to datalist"><br>
+    <input type="submit" formaction="formprocess/admin.php" value="submit to admin">
+    <input type="submit" name="submit" value="submit to this window">
+    <input type="submit" name="submit" formtarget="_blank" value="submit to a new tab">
+</form>
+<br>
+<form action="formprocess/sitevisit.php" method="get">
+    <label>Site Visit</label>
+    <table>
+        <tr>
+            <td>Birthday (must be 21 or older)</td>
+            <td>
+                <input type="date" name="birthday" max="2000-01-01">
+            </td>
+        </tr>
+        <tr>
+            <td>When would you like to vist</td>
+            <td>
+                <input type="date" name="visitdate" min="2022-01-01">
+            </td>
+        </tr>
+        <tr>
+            <td>Number of visitors</td>
+            <td>
+                <input type="number" name="visitors" min="2" max="8">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="submit" value="Request a Site Visit">
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<label>First Name:</label><input type="text" id="first"><br>
+<label>Last Name:</label><input type="text" id="last"><br>
+<button id="storeData">Store Button</button>
+<div id="output">
+    First name: <output id="fnameOutput"></output><br>
+    Last name: <output id="lnameOutput"></output><br>
+</div>
+<button id="retrieveData">Retrieve Data</button>
+
+<!--pulls info from other forms-->
+<!--<form action="formprocess.php" id="personalinfo">
+    <label for="userName">Username</label>
+    <input type="text" id="userName" mame="userName" pattern="^[A-Za-z][A-Za-z0-9_]{7,29}$" required />
+    <input type="submit" name="submit" value="submit">
+</form>
+<br>
+<br>
+<br>
+Email: <input type="email" name="email" form="personalinfo"><br> -->
+go to <a href="index.html">Index Page</a>
+</body>
+</html>

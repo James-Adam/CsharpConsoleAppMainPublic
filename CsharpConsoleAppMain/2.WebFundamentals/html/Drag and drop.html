@@ -1,0 +1,204 @@
+<html>
+<head>
+    <title>Drag and Drop</title>
+    <!--<link rel="stylesheet" href="styles/styles.css">-->
+    <!--<script src="style/js.js">-->
+    <!--</script>-->
+    <style>
+        /*
+            #holder { border: 10px dashed #ccc;
+                width: 300px; min-height: 300px;
+                margin: 2opx auto;}
+
+            #holder.hover { border: 10px dashed #0c0;}
+
+            #holder img {display: block; margin: 10px auto;}
+            #holder p{ margin: 10px; font-size: 14px;}
+            progress { width: 100%; }
+            progress::after {content: '%';}
+            .fail {background: #c00; padding: 2px; color: #fff;}
+            .hidden {display: non !important;}*/
+
+        #target {
+            border: 1px solid black;
+            height: 250px;
+            margin-bottom: 20px;
+            width: 350px;
+        }
+    </style>
+</head>
+<body>
+<section id="wrapper">
+    <header>
+        <h1> Drag and drop, automatic upload</h1>
+    </header>
+
+    <artical>
+        <!--
+        <div id="holder">
+        </div>
+        <p id="upload" class="hidden"><label>Drag & drop not supported,
+            but you can still upload via this input field<br>
+            <input type="file"></label></p>
+        <p id="filereader">File API & FileReader not supported</p>
+        <p id="formdata">XHR2's FormData is not supported</p>
+        <p id="progress">XHR2's upload progress isnt supported</p>
+        <p>upload progress: <progress id="uploadprogress" min="0"
+                                      max="100" value="0">0</progress></p>
+        <p> Drag an image from your desktop on to the dop zone
+            above to see the browser both render the preview,
+            but also upload it to the server
+        </p>-->
+    </artical>
+
+    <script>
+        /*var holder = document.getElementById('holder'),
+            tests= {
+                filereader: typeof FileReader != 'undefined',
+                dnd: 'draggable' in document.createElement('span'),
+                formdata: !!window.FormData,
+                progress: "upload" in new XMLHttpRequest
+            },
+            support = {
+                filereader: document.getElementById('filereader'),
+                formdata: document.getElementById('formdate'),
+                progress: document.getElementById('progress')
+            },
+            acceptedTypes = {
+                'image/png': true,
+                'image/jpeg': true,
+                'image/gif': true
+            },
+
+            progress = document.getElementById('uploadprogress'),
+            fileupload = document.getElementById('upload');
+
+            "filereader formdata progress".split('').forEach(function (api)
+            {
+                if (tests[api] === false) {
+                    support[api].className = 'fail';
+                } else {
+                    support[api].className = 'hidden';
+                }
+            });
+
+            function previewfile(file) {
+                if (tests.filereader === true && acceptedTypes[file.type] === true) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        var image = new Image();
+                        image.src = event.target.result;
+                        image.width = 250; // fake resize
+                        holder.appendChild(image);
+                    };
+                    reader.readAsDataURL(file);
+
+                } else {
+                    holder.innerHTML += '<p>Uploaded ' + file.name + ' ' + (file.size ?
+                        (file.size/1024|0) + 'K' : '');
+                        console.log(file);
+                }
+            }
+
+            function readfiles(files)
+            {
+                debugger;
+                var formData = tests.formdata ? new FormData() : null;
+                for (var i = 0; i < files.legnth; i++)
+                {
+                    if (tests.formdata) formData.append('file', files[i]);
+                    previewfile(files[i]);
+                }
+
+                //now post a new XHR request
+                if (tests.formdata)
+                {
+                    var xhr = new XMLHttpRequest();
+                   // xhr.open('POST' '/devnull.php');
+                    xhr.onload = function()
+                    {
+                        progress.value = progress.innerHTML = 100;
+                    };
+
+                    if (tests.progress)
+                    {
+                        xhr.upload.onprogress = function (event)
+                        {
+                            if (event.lengthComputable)
+                            {
+                                var complete = (event.loaded / event.total * 100 | 0);
+                                progress.value = progress.innerHTML = complete;
+                            }
+                        }
+                    }
+
+                    xhr.send(formData);
+                }
+            }
+
+            if (tests.dnd)
+            {
+                holder.ondragover = function () {this.className = 'hover'; return false; };
+                holder.ondragend = function () {this.className = ''; return false; };
+                holder.ondrop = function (e)
+                 {this.className = '';
+                e.preventDefault();
+                readfiles(e.dataTransfer.files);
+            }
+
+            }else
+            {
+               fileupload.className = 'hidden';
+               fileupload.querySelector('input').onchange = function ()
+               {
+                   readfiles(this.files);
+               };
+            }
+             /*
+            function handleFileSelect(evt) {
+                var files = evt.target.files; //Filelist object
+
+                //files is a filelist of file objects. list some properties
+                var output = [];
+                for (var i = 0, f;
+                f = files[i];
+                i++) {
+                    output.push('<li><strong>', escape(f.name), '</strong> (', f.type
+                        || 'n/a', ') -',
+                        f.size, ' bytes, last modified: ',
+                        f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                        '</li');
+                }
+                document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+            }
+            document.getElementById('files').addEventListener('change', handleFileSelect, false);*/
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("Text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</section>
+
+<!--file upload-->
+<!--
+<section>
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output> -->
+<!--</section>-->
+<div id="target" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<img id="dragMe" src="../Test/images/dog.jpg" width="300px" height="200px" draggable="true" ondragstart="drag(event)">
+
+go to <a href="index.html">Index Page</a>
+</body>
+</html>

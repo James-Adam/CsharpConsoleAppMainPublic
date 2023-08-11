@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Persons>
+	<Person>
+		<PersonNumber>1</PersonNumber>
+		<Name>Sam Novak</Name>
+		<Current>Yes</Current>
+		<Phone Type="Main">303-555-8173</Phone>
+		<Phone Type="Alt">303-555-8194</Phone>
+		<Address>
+			<street>472 Barcel Ct.</street>
+			<City>Northglenn</City>
+			<State>CO</State>
+			<Zip>80233</Zip>
+			<Country>USA</Country>
+		</Address>
+	</Person>
+	<Person>
+		<PersonNumber>2</PersonNumber>
+		<Name>John Doe</Name>
+		<Current>Yes</Current>
+		<Phone Type="Main">082-636-5645</Phone>
+		<Phone Type="Alt">303-425-6352</Phone>
+		<Address>
+			<street>4435 Jan SMuts Av.</street>
+			<City>New York</City>
+			<State>NY</State>
+			<Zip>80269</Zip>
+			<Country>USA</Country>
+		</Address>
+	</Person>
+	<Person>
+		<PersonNumber>3</PersonNumber>
+		<Name>Lucy Papadopolus</Name>
+		<Current>Yes</Current>
+		<Phone Type="Main">813-555-8214</Phone>
+		<Phone Type="Alt">813-555-8254</Phone>
+		<Address>
+			<street>7863 Scardsdale Hts. Freeway</street>
+			<City>St. Petersburg</City>
+			<State>FL</State>
+			<Zip>33730</Zip>
+			<Country>USA</Country>
+		</Address>
+	</Person>
+	<Person>
+		<PersonNumber>4</PersonNumber>
+		<Name>Betsy Schoenburg</Name>
+		<Current>No</Current>
+		<Phone Type="Main">404-555-3729</Phone>
+		<Phone Type="Alt">404-555-3731</Phone>
+		<Address>
+			<street>682 Nashby St. South</street>
+			<City>Atlanta</City>
+			<State>GA</State>
+			<Zip>39903</Zip>
+			<Country>USA</Country>
+		</Address>
+	</Person>
+</Persons>

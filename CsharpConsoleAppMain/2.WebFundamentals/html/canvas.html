@@ -1,0 +1,166 @@
+<!DOCTYPE HTML5>
+<html>
+<head>
+    <title> java</title>
+
+    <style>
+        /*  body
+                {
+                    font-family: Calibri;
+                    font-size: 16px;
+                    margin: 0px;
+                    padding: 0px;
+                }*/
+        
+        
+    </style>
+    <script type="text/javascript">
+
+        /* // animate
+        function animate()
+        {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext('2d');
+            var myRectangle =
+            {
+                x: 0,
+                y: 75,
+                width: 50,
+                height: 50,
+                borderWidth: 2,
+            };
+            var newX = 0;
+
+            drawRectangle(myRectangle, context);
+            var sequence = setInterval(update,1);
+
+            function update ()
+            {
+                if (newX + 1 >= canvas.width - myRectangle.width -
+                myRectangle.borderWidth / 2)
+                {
+                    clearRectangle(myRectangle, context);
+                    newX = 0;
+                    drawRectangle(myRectangle, context);
+                    clearInterval(sequence);
+                } else
+                {
+                    newX += 1;
+                    myRectangle.x = newX;
+                    clearRectangle(myRectangle, context);
+                    drawRectangle(myRectangle, context);
+                }
+            }
+
+            function drawRectangle(myRectangle, context)
+            {
+                context.beginPath();
+                context.rect(myRectangle.x, myRectangle.y, myRectangle.width, myRectangle.height);
+                context.fillStyle = "#ff0000";
+                context.fill();
+                context.lineWidth = myRectangle.borderWidth;
+                context.strokeStyle = 'black';
+                context.stroke();
+
+            }
+
+            clearRectangle(myRectangle, context)
+            {
+                context.clearRect(myRectangle.x - 5, myRectangle.y - 5, myRectangle.width + 10, myRectangle.height + 10);
+            }
+        } --> */
+
+        //tracking objects on canvas
+        /*
+        var xLoc = 0;
+        var yLoc = 0;
+        var xOld = 0;
+        var yOld = 0;
+
+        function doIt()
+        {
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext('2d');
+            xLoc = document.getElementById("xLoc").value;
+            yLoc = document.getElementById('yLoc').value;
+            var myRectangle = { width: 50, height: 50, borderWidth: 2};
+            document.getElementById('output').innerHTML = "xLoc: " + xLoc +
+            "yLoc: " + yLoc + " xOld: " + xOld + " yOld: " + yOld;
+            context.clearRect(xOld - 5, yOld -5, myRectangle.width + 10, myRectangle.height + 10);
+
+            xOld = xLoc;
+            yOld = yLoc;
+            drawRectangle(myRectangle, context);
+
+            function drawRectangle(myRectangle, context)
+            {
+                context.beginPath();
+                context.rect(xLoc, yLoc, myRectangle.width, myRectangle.height);
+                context.fillStyle = "blue";
+                context.fill();
+                context.lineWidth= myRectangle.borderWidth;
+                context.strokeStyle = "#000000";
+                context.stroke();
+
+            }
+        }*/
+
+        // tracking mouse coordinates on the HTML5 Canvas
+        /*
+        var click = false;
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d")
+        var context = canvas.getContext("2d");
+
+        canvas.addEventListener("mousemove", function (event) {
+            var rect = canvas.getBoundingClientRect();
+            x = Math.round((event.clientX - rect.left) * 100) /100;
+            y = Math.round((event.clientY - rect.top) * 100) /100;
+            makeMsg();
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.font = "14pt Calibri";
+            context.fillStyle = "#000000";
+            context.fillText(Message, 10, canvas.height - 10);
+        }, false);
+
+        canvas.addEventListener("mousedown", function (event) {
+            click = true;
+            makeMsg();
+        }, false);
+
+        canvas.addEventListener("mouseup", function (event ) {
+            click = true;
+            makeMsg();
+        }, false);
+
+        function makeMsg () {
+
+        } */
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        context.font = "50pt Calibri";
+
+        context.fillStyle = "blue";
+        context.fillText = ("Hello world", 80, 80);
+
+        context.fillStyle = "red";
+        context.rotate(Math.PI / 180) * 45;
+        context.fillText("Hello World", 50, 50);
+    </script>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="400" style="border: 1px solid black;"></canvas>
+<br><br>
+<!-- <input type="button" onclick="animate()" value="GO" />-->
+<!--
+x: <input type="text" id="xloc" size="5" />
+y: <input type="text" id="yloc" size="5" />
+
+<input type="button" onclick="doIt()" value="GO" />
+-->
+
+<br><br>
+<br><br>
+<!-- <span id ="output"></span>-->
+</body>
+</html>

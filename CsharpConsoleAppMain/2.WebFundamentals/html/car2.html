@@ -1,0 +1,784 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+<script type="text/javascript">
+    function openSesame() {
+        window.open("http://www.msn.com", "_blank", "top=100,left=200,height=400,width=600,toolbar=no, resizable=no");
+    }
+
+    confirm("are you sure you want to continue?");
+    x = prompt("please enter your name");
+    alert("welcome " + x);
+
+    //functions
+    function fn1() {
+        //statements go here
+        var x = 0;
+        x = x + 1;
+        alert(x);
+    }
+
+    function fn2() {
+        var y = 0;
+        y = y - 1;
+        alert(y);
+    }
+
+    //passing value to functions
+    function doIt(x, y) {
+        alert(x * y);
+    }
+
+    //
+    function dontIt(x) {
+        alert(x.value);
+        alert(x.innerHTML);
+    }
+
+    function doIt1() {
+        //x = document.getElementById("output");
+        //alert(x.innerHTML);
+        //alert(x.id);
+
+        //document.getElementById("output").innerText = "text changed.";
+        document.getElementById("output").innerHTML = "text changed." +
+            "<br>" +
+            " would you like to try again?";
+    }
+
+    function doIt2() {
+        var classes = document.getElementsByClassName("class1");
+        alert("Number of " + classes[0].className + " is  " + classes.length);
+    }
+
+    function doIt3(chClass) {
+        var addClass = chClass.value;
+        var object = document.getElementById("div1");
+        object.className = addClass;
+    }
+
+    function doIt4() {
+        //document.getElementById("redBox").innerHTML = "new text";
+        //document.getElementById("redBox").style.fontFamily = "Times New Roman";
+        document.getElementById("redBox").style.color = "#0000ff";
+        document.getElementById("redBox").style.backgroundColor = "#00ff00";
+    }
+
+    function doIt5() {
+        var tag = document.getElementsByClassName("div");
+        /*for (var i = 0; 1 < tag.length; i++)
+        {
+            tag[i].style.backgroundColor = "red"
+            tag[i].style.font = "20px Calibri"
+            tag[i].innerHTML = "Changed";
+        }*/
+        alert(tag);
+        //alert(tag[0].className)
+    }
+
+    //dectecting browser type
+    function browserDtct() {
+        outputTxt = "Browser Codename: " + navigator.appCodeName + '<br>';
+        outputTxt += "Browser Name: " + navigator.appName + '<br>';
+        outputTxt += "Browser Version: " + navigator.appVersion + '<br>';
+        outputTxt += "Cookies Enabled: " + navigator.cookieEnabled + '<br>';
+        outputTxt += "Browser Language: " + navigator.language + '<br>';
+        outputTxt += "Browser Online: " + navigator.platform + '<br>';
+        outputTxt += "user-agent Header: " + navigator.userAgent + '<br>';
+
+        document.getElementById("browserOut").innerHTML = outputTxt;
+    }
+
+    //feature detect
+    function featureDtct() {
+        var inputs = ["search", "number", "range", "color", "tel", "url", "email", "date", "month", "week", "time", "datetime", "datetime-local"];
+        //create input element
+        var inp = document.createElement("input");
+
+        for (i = 0; i < 13; i++)
+        //set the attribute
+        {
+            inp.setAttribute("type", inputs[i]);
+            //text returned if not supported
+            if (inp.type == "text") {
+                document.getElementById("featureOut").innerHTML += "&lt;input type='" + inputs[i] + "&gt;: NO" + "<br>";
+            } else {
+                document.getElementById("featureOut").innerHTML += "&lt;input type='" + inputs[i] + "&gt;: YES" + "<br>";
+            }
+        }
+    }
+
+    //checking video support
+    function vidGo() {
+        //supports the html5 video tag
+        vid = !!document.createElement('video').canPlayType;
+        if (vid == true) {
+            outputTxt = "congratulations your web rowser supports video";
+        } else {
+            outputTxt = "Sorry, your browser does not support html5 video";
+        }
+        document.getElementById("vidOut").innerHTML = outputTxt;
+    }
+
+    function vidFormDoit() {
+        vid = document.createElement('video');
+
+        outputTxt = "MPEG4: " +
+            vid.canPlayType('video/mp4; codecs="mp4v.20.8"') +
+            '<br>' +
+            "H.264: " +
+            vid.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"') +
+            '<br>' +
+            "OGG Theora/Vorbis: " +
+            vid.canPlayType('video/ogg; codecs="mp4v.20.8"') +
+            '<br>' +
+            "WebM: " +
+            vid.canPlayType('video/webm; codecs="vp8,vorbis"') +
+            '<br>' +
+            "iPhone/Mac: " +
+            vid.canPlayType('video/mp4; codecs="avc1.42E01E,mp4a.40.2"') +
+            '<br>';
+
+        document.getElementById('vidFormOutput').innerHTML = outputTxt;
+    }
+
+    // detecting canvas support
+    function canvasDoit() {
+        outputTxt = !!document.createElement('canvas').getContext;
+        document.getElementById('canvasOutput').innerHTML = outputTxt;
+    }
+
+    //<!--Dectecting canvas text support-->
+    function canTxtDoit() {
+        //// suports the html canvas
+        var canvas = document.createElement("canvas");
+        var context = canvas.getContext("2d");
+        supportsTxt = typeof context.fillText;
+        if (supportsTxt == 'function') {
+            outputTxt = "this browser supports canvas text";
+        } else {
+            outputTxt = "canvas text not supported";
+        }
+        document.getElementById("canTxtOutput").innerHTML = outputTxt;
+
+    }
+
+    // <!--detect browser screen resolution-->
+    function resDoIt() {
+        var W = window.screen.availWidth;
+        var H = window.screen.availHeight;
+        document.getElementById("resOutput").innerHTML = "width: " + W + " Height: " + H;
+    }
+
+    //detect and change screen orientation
+    //alert(window.orientation); // not wanted by viewers mobile devices
+    screen.addEventListener("orientationchange",
+        function() {
+            //indert coder here
+        });
+
+    //using dialog tag
+    function showIt() {
+        document.getElementById("notify").style.display = "block";
+    }
+
+    function hideIt() {
+        document.getElementById("notify").style.display = "none";
+    }
+
+    //using web storage objects get and set
+    function storeIt() {
+        var result = "";
+        localStorage.setItem("company1", "Diallonics");
+        result = localStorage.getItem("company1");
+        document.getElementById("storageOut").innerHTML = result;
+    }
+
+    //using the meter tag in html5 document
+    function update() {
+        var val = document.getElementById("range1").value;
+        document.getElementById("metOutput").innerHTML = val;
+        document.getElementById("meter2").value = val;
+    }
+
+    //using the progress tag in html5 document
+    function go() {
+        var inc = 0;
+        var proDoIt = setInterval(updateProgress, 50);
+
+        function updateProgress() {
+            inc++;
+            if (inc > 100) {
+                document.getElementById("progOutput").innerHTML = "done!";
+            } else {
+                document.getElementById("progOutput").innerHTML = inc + "%";
+                document.getElementById("progress1").value = inc;
+            }
+        }
+    }
+</script>
+<style>
+
+        /*classic drop down*/
+        /* a {
+            text-decoration: none;
+        }
+        nav
+        {
+            list-style: none;
+        }
+        nav ul
+        {
+            font-family: calibri;
+            font-size: 14pt;
+            color: black;
+            text-decoration: none;
+            list-style: none;
+
+        }
+        nav ul ul
+        {
+            display: none;
+            list-style: none;
+
+        }
+        nav ul li:hover > ul
+        {
+            display: block;
+        } */
+    body {
+        background-color: brown;
+        height: 2000px;
+        width: 1280px;
+    }
+
+    #wrapper {
+        background-color: lightgray;
+        height: 1900px;
+        margin: 0 auto;
+        width: 1250px;
+    }
+
+    #banner {
+        /*float: right;*/
+        background-color: gray;
+        height: 100px;
+        width: 1250px;
+    }
+
+    /*#navigation
+        {
+         width: 1250px;
+         height: 50px;
+         background-color: white;
+         float: left;
+        }*/
+
+    #nav {
+        -moz-border-radius: 10px;
+        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+        -webkit-border-radius: 10px;
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+        background: linear-gradient(#a9a9a9, #333333);
+        background: -webkit-linear-gradient(#a9a9a9, #333333);
+        background: -moz-linear-gradient(#a9a9a9, #333333);
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+        line-height: 100%;
+        margin: 0;
+        padding: 4px 3px 0;
+    }
+
+    /* styles for list items*/
+
+    #nav li {
+        float: left;
+        list-style: none;
+        margin: 0 5px;
+        padding: 00 8px;
+        position: relative;
+    }
+
+    /*styles for top level links */
+
+    #nav a {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        color: rgba(255, 255, 255, .8);
+        display: block;
+        font-weight: bold;
+        margin: 0;
+        padding: 8px 20px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 0 1px #6d6d6d;
+        width: 180px;
+    }
+
+    /*styles for top level link hover */
+
+    #nav .current a, #nav li:hover > a {
+        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+        background: linear-gradient(#6d6d6d, #a1a1a1);
+        background: -webkit-linear-gradient(#6d6d6d, #a1a1a1);
+        background: -moz-linear-gradient(#6d6d6d, #a1a1a1);
+        border-top: solid 1px #f8f8f8;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+        color: #444;
+        text-shadow: 0 1px 0px rgba(255, 255, 255, .8);
+    }
+
+    /*styles for drop down hover*/
+
+    #nav ul li:hover a, #nav li:hover li a {
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        background: none;
+        border: none;
+        box-shadow: none;
+        color: #666;
+    }
+
+    /*display the main menue bar*/
+
+    #nav {
+        display: inline-block;
+        width: 1245px;
+    }
+
+    /* drop down the menue items*/
+
+    #nav li:hover > ul { display: block; }
+
+    /*styles for level 2 links*/
+
+    #nav ul {
+        -moz-border-radius: 10px;
+        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+        -webkit-border-radius: 10px;
+        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+        background: -webkit-gradient(#fff, #cfcfcf);
+        background: -moz-linear-gradient(#fff, #cfcfcf);
+        background: -ms-linear-gradient(#fff, #cfcfcf);
+        background: gradiant(#fff, #cfcfcf);
+        border: solid 1px #b4b4b4;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+        display: none;
+        left: 0px;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 35px;
+        width: 180px;
+    }
+
+    /* sets the dimention of the drop down items*/
+
+    #nav ul li {
+        float: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* sets the styling of drop down menue text*/
+
+    #nav ul a {
+        font-weight: normal;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, .9);
+    }
+
+    #content {
+        /*position: relative;*/
+        background-color: silver;
+        float: left;
+        height: 1650px;
+        width: 1250px;
+        /*margin: 0 auto;*/
+    }
+
+    #contentLeft {
+        /*position: relative;*/
+        background-color: white;
+        float: left;
+        height: 800px;
+        width: 625px;
+    }
+
+    #contentRight {
+        /*position: relative;*/
+        background-color: white;
+        float: left;
+        height: 800px;
+        width: 625px;
+    }
+
+    #contentBottom {
+        /*position: relative;*/
+        background-color: silver;
+        float: left;
+        height: 800px;
+        width: 1250px;
+    }
+
+    #footer {
+        background-color: lightgray;
+        float: left;
+        height: 100px;
+        width: 1250px;
+    }
+
+    .class1 {
+        background-color: #ffd800;
+        height: 100px;
+        width: 100px;
+    }
+
+    .class2 {
+        background-color: #000000;
+        height: 100px;
+        width: 100px;
+    }
+
+    .class3 {
+        background-color: #ffd800;
+        height: 100px;
+        width: 100px;
+    }
+
+    #redBox {
+        background-color: #f00;
+        color: #ffd800;
+        font-family: Calibri;
+        font-size: 14pt;
+        font-weight: bold;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        width: 200px;
+    }
+
+    #types { float: left; }
+
+    #featureOut { float: left; }
+
+    /*//detect and change screen orientation*/
+
+    @media screen and (orientation: portrait) {
+        /*portrait styles*/
+    }
+
+    @media screen and (orientation: landscape) {
+        /*landscape styles*/
+    }
+
+    /* mark css*/
+
+    mark { background-color: grey; }
+
+    .green { background-color: green; }
+
+    #notify { display: none; }
+
+    /*costumizing progress bars in html5 using css*/
+
+    progress {
+        background: gold;
+        border: 0;
+        border-radius: 9px;
+        color: silver;
+        height: 18px;
+    }
+
+    progress::-webkit-progress-bar {
+        background: gold;
+        border: 0;
+        border-radius: 9px;
+        height: 18px;
+    }
+
+    progress::-webkit-progress-value {
+        background: red;
+        border: 0;
+        border-radius: 9px;
+        height: 18px;
+    }
+
+    progress::-moz-progress-value {
+        background: red;
+        border: 0;
+        border-radius: 9px;
+        height: 18px;
+    }
+</style>
+</head>
+<body>
+<div id="wrapper">
+<div id="banner">Banner</div>
+
+<div id="navigation">
+
+    <ul id="nav">
+        <li>
+            <a href="#">HOME</a>
+            <ul>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">FAQ</a>
+            <ul>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">ABOUT</a>
+            <ul>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">CAREERS</a>
+            <ul>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">CONTACT US</a>
+            <ul>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+                <li>
+                    <a href="#">Page1</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="content">
+    <div id="contentLeft">
+        <input type="button" name="register" id="reg" value="Search Bing" onclick="window.open('http://bing.com', '_blank')"/>
+
+        <br><br>
+
+        <a href="#" onclick="openSesame()">Click me</a>
+
+        <br><br>
+
+        <button onclick="fn1()">Function 1</button><br><br>
+        <button onclick="fn2()">Function 2</button><br><br>
+
+        <button id="button1" onclick="doIt(5, 10)">Click me</button><br><br>
+
+        <button id="button2" value="myBtn" onclick="dontIt(this)">Click me 2</button><br><br>
+
+        <button id="button3" onclick="doIt1()">Click me 3</button><br><br>
+        <span id="output">This is some text</span>
+        <br>
+        <br>
+        <div id="div1class" class="class1">class1</div><br>
+        <div id="div2class" class="class1">class2</div><br>
+        <div id="div3class" class="class1">class3</div><br>
+        <input type="button" value="click" onclick="doIt2()"/>
+        <span id="output1"></span>
+
+        <br>
+
+        <div id="div1">&lt; div&gt; "div1"</div><br>
+        <input type="button" onclick="doIt3(this)" value="class1"/>
+        <input type="button" onclick="doIt3(this)" value="class2"/>
+        <input type="button" onclick="doIt3(this)" value="class3"/>
+        <hr>
+        <span id="output2"></span>
+        <br>
+    </div>
+
+    <div id="contentRight">
+        <div id="redBox" class="clickBox">ID = "redBox"</div>
+        <br>
+        <input type="button" onclick="doIt4()" value="GO"/>
+        <br>
+        <br>
+        <input type="button" onclick="doIt5()" value="Go"/>
+        <br>
+        <span id="output3"></span>
+        <br>
+        <!--adding keygen-->
+        <form action="../Test/aspForm/submit.asp" method="get">
+            Username: <input type="text" name="usr_name"/> <br>
+            Password: <input type="password" name="usr_pw"/> <br>
+            Encryption: <keygen name="security" keytype="rsa"/>
+            <input type="submit" value="Submit">
+        </form>
+
+        <!--using dialog tag-->
+        <dialog id="notify">
+            You clicked the button!
+            <br>
+            <br>
+            <button id="exit" onclick="hideIt()">Exit</button>
+        </dialog>
+        <br><br>
+        <button onclick="showIt()">Show</button>
+
+        <br>
+
+        <!--web storage objects-->
+        <button id="storageGo" onclick="storeIt()">Storage Go</button><br>
+        <span id="storageOut"></span>
+    </div>
+
+    <div id="contentBottom">
+        <!--Dectecting canvas support-->
+        <br>
+        <button id="canvasGo" onclick="canvasDoit()">Canvas GO</button>
+        <span id="canvasOutput"></span>
+        <br>
+        <!--Dectecting canvas text support-->
+        <button id="canTxtGo" onclick="canTxtDoit()">CanTxt GO</button>
+        <span id="canTxtOutput"></span>
+        <hr>
+        <!--Dectecting html5 video format support-->
+        <button id="vidFormGo" onclick="vidFormDoit()">vidForm Go</button>
+        <span id="vidFormOutput">
+            MPEG4:<br>
+            H.264:<br>
+            OGG Theora/Vorbis:<br>
+            WebM:<br>
+            iPhone/Mac:
+        </span>
+
+        <!--detecting browser type-->
+        <br><br>
+        <button id="vidBtn" onclick="vidGo()">video Go</button>
+        <span id="vidOut"></span>
+
+        <br><br>
+        <button id="browserDtct" onclick="browserDtct()" value="browserDtct">browserDtct</button><br>
+        <span id="browserOut"></span>
+        <br>
+
+        <button id="featureDtct" onclick="featureDtct()" value="featureDtct">featureDtct</button><br>
+        <strong>New HTML5 Input Types: </strong><br>
+        <div id="types">
+            search boxes<br>
+            spinboxes<br>
+            Sliders<br>
+            Color Pickers<br>
+            Telephone Numbers<br>
+            Web Addresses<br>
+            Email Addresses<br>
+            Calendar date pickers<br>
+            months<br>
+            weeks<br>
+            Timestamps<br>
+            Precise date+time stamps<br>
+            Local dates and times<br>
+        </div>
+
+        <!--detect browser screen resolution-->
+        <div id="featureOut"></div>
+        <button onclick="resDoIt()">Detect</button> <br><br>
+        <span id="resOutput"></span>
+        <br>
+
+        <!--using time stampsAND HIGHLIGHTING text-->
+        <!--wbr tag keeps form together-->
+        <p>This Meeting is at <time>10:00</time> on <mark><wbr>Friday<wbr>Saturday<wbr>Sunday</mark></p>
+        <blockquote>
+            The AGM occurs in Chicago on
+            <time datetime="2015-06-01">
+                <mark class="green">June 1st, 2015</mark>
+            </time>
+        </blockquote>
+
+        <!--using the meter tag in an html5 Document-->
+        <br><br><br><br><br><br><br><br><br>
+        <hr>
+        <meter id="meter1" value="0.25" min="0" max="1" style="width: 100px;">
+            0.25 out of 1.0 (25%)
+        </meter>
+        <br>
+        <meter id="meter2" value="0.5" min="0" max="100" style="width: 100px;">
+            0.5 out of 1.0 (50%)
+        </meter>
+        <input type="range" id="range1" value="0" min="0" max="100" onchange="update()"/>
+        <br>
+        <span id="metOutput"></span>
+
+        <br>
+
+        <!--using the progress Tag in an HTML5 Document-->
+        <progress id="progress1" value="0" min="0" max="100"
+                  style="width: 300px">
+        </progress>
+        <br>
+        <span id="progOutput"></span><br><br>
+        <button id="go" onclick="go()">GO</button>
+    </div>
+</div>
+
+<div id="footer">Footer</div>
+</div>
+</body>
+</html>

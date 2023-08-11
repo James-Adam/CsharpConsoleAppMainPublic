@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var Evs = Environment.GetEnvironmentVariables() as System.Collections.Hashtable;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    @{
+        var dic = ViewBag.Env as System.Collections.Hashtable;
+
+        foreach (System.Collections.DictionaryEntry item in dic)
+        {
+            <li> [@item.Key]:@item.Value</li>
+        }
+    }
+    <h2>Determining Hosting Enironment Capabilities</h2>
+    <h4>
+        Note: environment variables and values arnt case sensitive on windows and mac, but on linux it is case sensitive by default
+    </h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th> HOST Environment   Key         </th>
+                <th>    Variable Value      </th>
+            </tr>
+        </thead>
+        <tr>
+            <td> OS</td>
+            <td>@Evs["OS"]</td>
+        </tr>
+        <tr>
+            <td>PROCESSOR_IDENTIFIER</td>
+            <td>@Evs["PROCESSOR_IDENTIFIER"]</td>
+        </tr>
+        <tr>
+            <td>PROCESSOR_LEVEL</td>
+            <td>@Evs["PROCESSOR_LEVEL"]</td>
+        </tr>
+        <tr>
+            <td>PROCESSOR_IDENTIFIER</td>
+            <td>@Evs["PROCESSOR_IDENTIFIER"]</td>
+        </tr>
+        <tr>
+            <td>PROCESSOR_REVISION</td>
+            <td>@Evs["PROCESSOR_REVISION"]</td>
+        </tr>
+        <tr>
+            <td>NUMBER_OF_PROCESSORS</td>
+            <td>@Evs["NUMBER_OF_PROCESSORS"]</td>
+        </tr>
+        <tr>
+            <td>PROCESSOR_ARCHITECTURE</td>
+            <td>@Evs["PROCESSOR_ARCHITECTURE"]</td>
+        </tr>
+        <tr>
+            <td>ASPNETCORE_ENVIRONMENT</td>
+            <td>@Evs["ASPNETCORE_ENVIRONMENT"]</td>
+        </tr>
+        <tr>
+            <td>HOMEPATH</td>
+            <td>@Evs["HOMEPATH"]</td>
+        </tr>
+    </table>
+    <hr />
+
+    @{
+        var st = "pinvoke   invoked";
+        var Arr = st.ToCharArray();
+
+        char ch = ' ';
+
+        for(int i = 0; i< Arr.Length; i++)
+        {
+            ch = StateConfiguration.Infra.Utility.CharUpper(Arr[i]);
+            @:@ch
+        }
+    }
+    in upper case 
+    <hr />
+    <h2>@ViewBag.Message</h2>
+    <hr />
+
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

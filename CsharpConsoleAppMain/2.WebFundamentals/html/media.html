@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="eng">
+<head>
+    <meta charset="utf-8"/>
+    <title>About</title>
+    <script type="text/javascript">
+
+        var playing;
+        var player;
+
+        window.onload = function1();
+        {
+            playing = 0;
+            document.getElementById('next').addEventListener('click', nextSong, false);
+            player = document.getElementById('track1');
+
+        }
+
+        function =
+        nextSong();
+        {
+            if (playing == 0) {
+                player.pause();
+                player.src = "audio/did you feel.mp3";
+                player.play();
+                playing = 1;
+            } else {
+                player.pause();
+                player.src = "audio/khotso.mp3";
+                player.play();
+                playing = 0;
+            }
+        }
+
+        var player, durationOutput, myInterval, elapsedOutput;
+        window.onload = function() {
+            document.getElementById('playButton').addEventListener('click', playMusic, false);
+            document.getElementById('stopButton').addEventListener('click', stopMusic, false);
+            play = document.getElementById('myAudio');
+
+            play.addEventListener('error', audioError, false);
+            play.addEventListener('ended', mediaEnded, false);
+
+            durationOutput = document.getElementById('duration');
+            elapsedOutput = document.getElementById('elapsed');
+        };
+
+        function mediaEnded() {
+            durationOutput.innerHTML = "";
+            elapsedOutput.innerHTML = "";
+            alert("media has completed playing");
+        }
+
+        function audioError() {
+            alert("the audio hass errored");
+        }
+
+        function playMusic() {
+            play.play();
+            durationOutput.innerHTML = Math.round(play.duration);
+            myInterval = setInterval(update, 500);
+
+        }
+
+        function update() {
+            elapsedOutput.innerHTML = Math.round(play.currentTime);
+        }
+
+        function stopMusic() {
+            play.pause();
+        }
+
+        window.onload = function() {
+            var myAudio = document.getElementId('track1');
+            myAudio.muted = true;
+        };
+    </script>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            font-family: arial;
+        }
+
+        tr { background-color: gray; }
+
+        tr:nth-child(odd) { background-color: green; }
+
+        td { background-color: blue; }
+
+        th { background-color: honeydew; }
+
+        ol { }
+
+        li { }
+
+        div { }
+
+        div.yellow /*div class */ { }
+
+        .yellow /* class */ { }
+
+        a /* hyper links*/ {
+            color: grey;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: yellow;
+            font-size: 30pt;
+        }
+
+        a:visited { color: gold; }
+    </style>
+</head>
+<body>
+<audio controls="controls" preload="preload" id="track1">
+    <!--loop="loop"-->
+    <source src="audio/did you feel.mp3" type="audio/mp3">
+    <!--<source src="audio/Who We Are (Feat. Taegan Truter).m4a" type="audio/m4a"> -->
+</audio>
+<br>
+<button id="next">Next</button>
+<br>
+
+<div id="yellow" class="yellow">
+</div>
+
+<video controls="controls">
+    <source src="videos/dummy-video.mp4">
+</video>
+
+<br>
+
+<audio id="myAudio">
+    <source src="audio/khotso.mp3" type="audio/mp3">
+</audio>
+<p>Duration: <output id="duration"></output></p>
+<p>Time Elapsed: <output id="elapsed"></output></p>
+<button id="playButton">Play</button>
+<button id="stopButton">Stop</button>
+
+<br>
+<br>
+<section>
+    <div id="table">
+        <table>
+            <tr>
+                <td>cell1</td>
+                <td>cell2</td>
+            </tr>
+            <tr>
+                <td>cell3</td>
+                <td>cell4</td>
+            </tr>
+        </table>
+    </div>
+</section>
+<br>
+<section>
+    <p>
+        Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown
+        printer took a galley of type and scrambled it to make a
+        type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in
+        the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop
+        publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+    </p>
+</section>
+
+go to <a href="index.html">index Page</a>
+</body>
+</html>

@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Bootstrap Example</title>
+    <environment include="Development">
+      
+
+    </environment>
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="/scripts/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+   <h1>Boot strap Grid Options</h1>
+
+   <h2>
+       Bootstrap 3 grid system has four tiers of classes: xs (phones), sm (tablets), md (desktops), and lg (larger desktops)
+   </h2>
+
+   <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="text-center">
+                Extra small<br />
+                <small>&lt;576px</small>
+            </th>
+            <th class="text-center">
+                Small<br />
+                <small>>576px</small>
+            </th>
+                <th class="text-center">
+                    Medium<br />
+                    <small>>768px</small>
+                </th>
+                <th class="text-center">
+                    Large<br />
+                    <small>>992px</small>
+                </th>
+                <th class="text-center">
+                    Extra large<br />
+                    <small>>1200px</small>
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="text-nowrap" scope="row">Max container width</th>
+            <td>None (auto)</td>
+            <td>540px</td>
+            <td>720px</td>
+            <td>960px</td>
+            <td>1140px</td>
+        </tr>
+        <tr>
+            <th class="text-nowrap" scope="row">Class prefix</th>
+            
+                <td><code>.col-</code></td>
+                <td><code>.col-sm-</code></td>
+                <td><code>.col-md-</code></td>
+                <td><code>.col-lg-</code></td>
+                <td><code>.col-xl-</code></td>
+        </tr>
+    </tbody>
+   </table>
+   @*<h1>Bootstrap grid examples</h1>
+   <div class="container">
+       <div class="row">
+           <div class="col-xs-12">.col-xs-12</div>
+       </div>
+       <div class=" row">
+           <div class="col-xs-12">.col-xs-12</div>
+            <div class="col-md-6">.col-md-6</div>
+       </div>
+        <div class=" row">
+            <div class="col-md-7">.col-md-7</div>
+            <div class="col-md-6">.col-md-6</div>
+            <div class="col-md-7">.col-md-7</div>
+            <div class="col-md-6">.col-md-6</div>
+        </div>
+   </div>*@
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Java</td>
+                    <td>90</td>
+                    <td>Programming Language</td>
+                </tr>
+                <tr>
+                    <td>PHP</td>
+                    <td>92</td>
+                    <td>Scrpting Language</td>
+                </tr>
+                <tr>
+                    <td>jQuery</td>
+                    <td>80</td>
+                    <td>JavaScript Library</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h1>Multi Column Layouts</h1>
+        <!--First row with column number(1)-->
+        <div class="row">
+            <div class="col-md-1" style="background-color:#8dc1aa">col-md-1</div>
+            <div class="col-md-1" style="background-color:#808080">col-md-1</div>
+            <div class="col-md-1" style="background-color:#8dc1aa">col-md-1</div>
+            <div class="col-md-1" style="background-color:#808080">col-md-1</div>
+            <div class="col-md-1" style="background-color:#8dc1aa">col-md-1</div>
+            <div class="col-md-1" style="background-color:#808080">col-md-1</div>
+            <div class="col-md-1" style="background-color:#8dc1aa">col-md-1</div>
+            <div class="col-md-1" style="background-color:#808080">col-md-1</div>
+            <div class="col-md-1" style="background-color:#8dc1aa">col-md-1</div>
+            <div class="col-md-1" style="background-color:#808080">col-md-1</div>
+            <div class="col-md-1" style="background-color:#8dc1aa">col-md-1</div>
+            <div class="col-md-1" style="background-color:#808080">col-md-1</div>
+        </div>
+        <br />
+        <!--Second row with column number(2)-->
+        <div class="row">
+            <div class="col-md-2" style="background-color:#cfa6e2">col-md-2</div>
+            <div class="col-md-2" style="background-color:#faa76c">col-md-2</div>
+            <div class="col-md-2" style="background-color:#cfa6e2">col-md-2</div>
+            <div class="col-md-2" style="background-color:#faa76c">col-md-2</div>
+            <div class="col-md-2" style="background-color:#cfa6e2">col-md-2</div>
+            <div class="col-md-2" style="background-color:#faa76c">col-md-2</div>
+        </div>
+        <br />
+        <!--Third row with column number(3)-->
+        <div class="row">
+            <div class="col-md-3" style="background-color:#d2ee8b">col-md-3</div>
+            <div class="col-md-3" style="background-color:#8dc1aa">col-md-3</div>
+            <div class="col-md-3" style="background-color:#d2ee8b">col-md-3</div>
+            <div class="col-md-3" style="background-color:#8dc1aa">col-md-3</div>
+        </div>
+        <br />
+        <!--Forth row with column number(4)-->
+        <div class="row">
+            <div class="col-md-4" style="background-color:#faa76c">col-md-4</div>
+            <div class="col-md-4" style="background-color:#cfa6e2">col-md-4</div>
+            <div class="col-md-4" style="background-color:#faa76c">col-md-4</div>
+        </div>
+        <br />
+        <!--Fifth row with column number(6)-->
+        <div class="row">
+            <div class="col-md-6" style="background-color:#808080">col-md-6</div>
+            <div class="col-md-6" style="background-color:#8dc1aa">col-md-6</div>
+        </div>
+    </div>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

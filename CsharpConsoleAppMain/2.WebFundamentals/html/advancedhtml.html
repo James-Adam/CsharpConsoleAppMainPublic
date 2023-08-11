@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title></title>
+<style>
+        /*<!--usiing css and sprites to animate-->*/
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #nav {
+        background: url("images/navbar.png");
+        height: 50px;
+        margin: 0 auto;
+        width: 810px;
+    }
+
+    #nav span { display: none; }
+
+    #nav li {
+        float: left;
+        list-style-type: none;
+    }
+
+    #nav a {
+        display: block;
+        height: 50px;
+    }
+
+    #nav1 { width: 160px; }
+
+    #nav2 { width: 160px; }
+
+    #nav3 { width: 160px; }
+
+    #nav4 { width: 160px; }
+
+    #nav5 { width: 160px; }
+
+    #nav1 a:hover { background: url("../Test/images/navbar.png") 0px -75px no-repeat; }
+
+    #nav2 a:hover { background: url("../Test/images/navbar.png") -160px -75px no-repeat; }
+
+    #nav3 a:hover { background: url("../Test/images/navbar.png") -320px -75px no-repeat; }
+
+    #nav4 a:hover { background: url("../Test/images/navbar.png") -480px -75px no-repeat; }
+
+    #nav5 a:hover { background: url("../Test/images/navbar.png") -640px -75px no-repeat; }
+
+    /*using the CSS3 box sizing property to fit html5 boxes*/
+
+    div.container {
+        border: 10px solid black;
+        height: 25px;
+        width: 300px;
+    }
+
+    div.box {
+        border: 1px solid red;
+        box-sizing: border-box; /*ms, moz, webkit, 0 */
+        float: left;
+        width: 33%;
+    }
+
+    /*api detection css*/
+
+    #types { float: left; }
+
+    #output { float: left; }
+
+    #marquee {
+        border: 1px solid black;
+        height: 20px;
+        padding-left: 15px;
+        width: 790px;
+    }
+</style>
+<script type="text/javascript">
+    // using user input to confirm
+    function confirmMe() {
+        var result;
+        var check = confirm("Would you kike to proceed?");
+        if (check == true) {
+            result = "proceeding";
+        } else {
+            result = "Cancelling";
+        }
+        document.getElementById("confirmoutput").innerHTML = result;
+    }
+
+    // api check
+    function apiDoIt() {
+        if (window.File) {
+            document.getElementById("apiOutput").innerHTML = "Supported<br>";
+
+        } else {
+            document.getElementById("apiOutput").innerHTML = "Not Supported<br>";
+        }
+        if (window.FileReader) {
+            document.getElementById("apiOutput").innerHTML += "Supported<br>";
+
+        } else {
+            document.getElementById("apiOutput").innerHTML += "Not Supported<br>";
+        }
+        if (window.FileList) {
+            document.getElementById("apiOutput").innerHTML += "Supported<br>";
+
+        } else {
+            document.getElementById("apiOutput").innerHTML += "Not Supported<br>";
+        }
+        if (window.Blob) {
+            document.getElementById("apiOutput").innerHTML += "Supported<br>";
+
+        } else {
+            document.getElementById("apiOutput").innerHTML += "Not Supported<br>";
+        }
+    }
+
+    document.getElementById("files").addEventListener("change", fileSelect, false);
+
+    function fileSelect(evt) {
+        var upped = evt.target.files; //filelist object
+        //list properties
+        var output = "";
+        for (var i = 0; i <= upped.length; i++) {
+            files - upped[i];
+
+            //only process image files
+            if (files.type, substring(0, 5) != "image") {
+                alert("not an image file");
+                return;
+            } else {
+                var reader = new FileReader();
+                //capture file information
+                reader.onload = (function(makeThumb) {
+                    return function(e) {
+                        //create thumbnail using span
+                        var span = document.createElement("span");
+                        span.innerHTML =
+                            ['<img class="thumb" src"', e.target.result, '" title="', escape(makeThumb.name), '" />'].join
+                            ("");
+
+                        document.getElementById("list").insertBefore(span, null);
+                    };
+                })(files);
+
+                //process file as a data URL
+                reader.readAsDataURL(files);
+            }
+            /* fileoutput =
+             upped[i].name + ' (' +
+             upped[i].type + ')<br>' +
+             upped[i].size + ' bytes<br>' +
+              upped[i].lastModifiedDate + 'last modified: ';
+             document.getElementById("list").innerHTML += fileoutput +
+             '<br><br>';*/
+        }
+    }
+
+    //<!--displaying time with script-->
+
+    function displayTime() {
+        now = new Date();
+        document.getElementById("timeOutput").innerHTML = now;
+        month = now.getMonth();
+        day = now.getDay();
+        date = now.getDate();
+        year = now.getFullYear();
+        //time is the number of millieseconds since midnight, january 1970
+        time = now.getTime();
+        document.getElementById("timeOutput").innerHTML += '<br><br>' +
+            " time: " +
+            time +
+            " year: " +
+            year +
+            " month: " +
+            month +
+            " date: " +
+            date +
+            " day: " +
+            day;
+
+    }
+
+    //creating count down timer
+    function countDoIt() {
+        setInterval(function countdown() {
+                now = new Date();
+                then = Date.parse(document.getElementById("date").value);
+                daysLeft = then - now;
+                days = Math.floor(daysLeft / (1000 * 60 * 60 * 24));
+                hours = Math.floor(daysLeft / (1000 * 60 * 60));
+                mins = Math.floor(daysLeft / (1000 * 60));
+                secs = Math.floor(daysLeft / 1000);
+                dd = days;
+                hh = hours - days * 24;
+                mm = mins - hours * 60;
+                ss = secs - mins * 60;
+                document.getElementById("countdown").innerHTML =
+                    dd +
+                    ' days ' +
+                    hh +
+                    ' hours ' +
+                    mm +
+                    ' minutes ' +
+                    ss +
+                    ' seconds ';
+
+            },
+            1000);
+    }
+
+    //capturing user input from a prompt
+    function nameMe() {
+        var result = prompt("enter your name to continue");
+        document.getElementById("promptoutput").innerHTML = "welcome to our website" + result;
+    }
+</script>
+</head>
+<body>
+
+<!--usiing css and sprites to animate-->
+
+<ul id="nav">
+    <li id="nav1">
+        <a href="#">
+            <span>Home</span>
+        </a>
+    </li>
+    <li id="nav2">
+        <a href="#">
+            <span>FAQ</span>
+        </a>
+    </li>
+    <li id="nav3">
+        <a href="#">
+            <span>About</span>
+        </a>
+    </li>
+    <li id="nav4">
+        <a href="#">
+            <span>Careers</span>
+        </a>
+    </li>
+    <li id="nav5">
+        <a href="#">
+            <span>Contact</span>
+        </a>
+    </li>
+</ul>
+<br>
+
+<br>
+<!--confirming user input using confirm-->
+<p>Press to continue</p>
+<input type="button" onclick="confirmMe()" value="Submit"/>
+<p id="confirmoutput"></p>
+<br>
+
+<!--//creating a scrolling marquee -->
+
+<div id="marquee">
+    <marquee direction="Right" height="50" width="780" background-color="white">Scrolling text</marquee>
+</div><br>
+<BR></BR>
+
+<!--capturing user input from a prompt-->
+<input type="button" onclick="nameMe()" value="Submit"/>
+<p id="promptoutput"></p>
+
+<br>
+<!--creating a countdown timer in an html5 document-->
+enter a date in the format "december 24"
+<!--displaying time with script-->
+<br>
+<button onclick="displayTime()">Show Time</button><br>
+<span id="timeOutput"></span>
+
+<!--editing form elements-->
+<p contenteditable>
+    Lorem Ipsum is simply dummy text of the printing
+    and typesetting industry. Lorem Ipsum has been
+    the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of
+    type and scrambled it to make a type specimen
+    book. It has survived not only five centuries,
+    but also the leap into electronic typesetting,
+    remaining essentially unchanged. It was
+    popularised in the 1960s with the release of
+    Letraset sheets containing Lorem Ipsum passages,
+    and more recently with desktop publishing
+    software like Aldus PageMaker including versions
+    of Lorem Ipsum.
+</p>
+<br>
+
+<!--editable content-->
+<ul contenteditable="true">
+    <li>shop for groceries</li>
+    <li>get oil changed</li>
+    <li>get supplies for classroom</li>
+</ul>
+<br><br>
+
+<!--using the CSS3 box sizing property to fit html5 boxes-->
+<div class="container">
+    <div class="box">Left</div>
+    <div class="box">Middle</div>
+    <div class="box">Right</div>
+</div>
+
+<!--detecting API Support-->
+<button id="apiGo" onclick="apiDoIt()">api Go</button><br><br>
+<strong>HTML5 file API Objectectd:</strong><br>
+<div id="types">
+    File<br>
+    Filereader<br>
+    Filelist<br>
+    Blob<br>
+</div>
+<div id="apiOutput"></div>
+
+<br>
+<br>
+<br>
+<br>
+
+<!--reading files using api-->
+<input type="file" id="files" multiple/><br><br>
+<span id="list"></span>
+<br>
+
+<!--reating count down timer-->
+Enter a date in the foormat "December 24, 2014"<br>(Optionally add time, e.g., "17:00:00")
+<br><br>
+<input type="text" id="date" size="50"/><br><br>
+<button onclick="countDoIt()">countDoIt</button><br><br>
+<div style="border: 2px solid; font-family: arial; height: 50px; line-height: 24px; text-align: center; vertical-align: middle; width: 400px;">
+    Countdown:<br>
+    <div id="countdown"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="AppMath.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="0,0,10,10">
+        <TextBlock x:Name="txtX" HorizontalAlignment="Left" Margin="305,580,0,0" TextWrapping="Wrap" Text="X="
+                   VerticalAlignment="Top" Height="30" Width="37" />
+        <TextBox x:Name="XNum" HorizontalAlignment="Left" Margin="354,580,0,0" TextWrapping="Wrap" Text="0"
+                 VerticalAlignment="Top" Height="32" Width="78" />
+        <TextBlock x:Name="txtY" HorizontalAlignment="Left" Margin="459,580,0,0" TextWrapping="Wrap" Text="X="
+                   VerticalAlignment="Top" Height="30" Width="37" />
+        <TextBox x:Name="YNum" HorizontalAlignment="Left" Margin="508,580,0,0" TextWrapping="Wrap" Text="0"
+                 VerticalAlignment="Top" Height="32" Width="78" />
+        <TextBlock x:Name="result" HorizontalAlignment="Left" Margin="690,587,0,0" TextWrapping="Wrap" Text="0"
+                   VerticalAlignment="Top" Height="30" Width="37" />
+        <Button x:Name="btnAdd" Content="Add" Margin="605,581,0,0" VerticalAlignment="Top" Click="btnAdd_Click" />
+    </Grid>
+</Page>

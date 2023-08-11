@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script type="text/javascript">
+
+        name = prompt("Please enter your name");
+        alert("Welcome to our website " + name + "!");
+
+        //a = 10
+        //alert(a)
+
+        function runMe1(element) {
+            alert("You Clicked" + element.value);
+        }
+
+        function runMe2(element) {
+            var un = document.getElementById("name").value;
+            var pw = document.getElementById("pass").value;
+            alert("Username: " + un + "Password: " + pw);
+        }
+    </script>
+</head>
+<body>
+<h1>Hello World!</h1>
+<input type="button" value="Submit1" onclick="runMe1(this)"/>
+
+<form>
+    Enter your name: <input id="name" type="text"/>
+    Enter a password:<input id="pass" type="password"/>
+    <input type="button" value="Submit2" onclick="runMe2()"/>
+</form>
+</body>
+</html>

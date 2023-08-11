@@ -1,0 +1,58 @@
+/*html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}*/
+body {
+    background-color: EFECCA;
+    color: #000;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'sans-serif';
+    font-size:24px;
+
+
+}
+
+div{
+    width:300px;
+    margin-block-end:50px auto;
+    text-align:center;
+}
+
+#Desktop, #Phone{
+    display: none;
+}
+@media only screen and (min-width: 1224px){
+    body{
+        background-color:lightblue;
+        color:black;
+    }
+    #Phone, #Tabl {
+        display: none;
+
+    } 
+    #Desktop {
+        display:block;
+    }
+}
+/* typical phone screen resolution */
+@media only screen and (max-width : 667px) {
+}
+/* landscape orientation */
+@media only screen and (min-width : 375px) and (max-width : 667px) and (orientation : landscape) {
+}
+/* portrait orientation */
+@media only screen and (min-width : 375px) and (max-width : 667px) and (orientation : portrait) {
+}

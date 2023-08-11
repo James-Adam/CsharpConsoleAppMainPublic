@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--creating and sending toasts-->
+<toast launch='action=MyLaunchAction&amp;myItemId=123'>
+	<visual>
+		<binding template='MyToastTemplate'>
+			<text>my title</text>
+			<text>my textual content</text>
+			<image src='mytoastimage.jpg' />
+			<img src='mylogo' placement='appLogoOverride' hint-crop='circle' />
+		</binding>
+	</visual>
+	<actions>
+		<input type='text' id='yourRespones' placeHolderContent='Type your response' />
+		<action content='Respond' arguments='action=YourResponse&amp;myItemId=123' activationType='background'
+		        imageUri='YourResponse.png' hint-inputId='yourResponse' />
+		<action content='Like' arguments='action=YourLike&amp;myItemId=123' activationType='background' />
+		<action content='View' arguments='action=YourView&amp;myItemId=123' />
+	</actions>
+</toast>

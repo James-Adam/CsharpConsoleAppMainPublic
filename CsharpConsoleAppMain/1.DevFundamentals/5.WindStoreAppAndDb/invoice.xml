@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Invoice>
+	<Number>026687</Number>
+	<Date>07/04/2016</Date>
+	<Address Type="Shipping">
+		<Name>Cody Blackwell</Name>
+		<Company>Dialonics, Inc.</Company>
+		<Address>5500 Park Avenue</Address>
+		<City>New York</City>
+		<State>NY</State>
+		<Zip>44553</Zip>
+		<Country>USA</Country>
+	</Address>
+	<Item1>
+		<SKU>334535455</SKU>
+		<Discription>Leather Office Chairs</Discription>
+		<Amount>10</Amount>
+		<Cost>199.99</Cost>
+		<Subtotal>1999.99</Subtotal>
+		<Tax>19.99</Tax>
+		<Total>219.98</Total>
+	</Item1>
+</Invoice>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>HTML5 Template</title>
+    <style>
+        a { display: block; }
+    </style>
+    <script type="text/javascript">
+        var ws;
+
+        function WebSocketOpen() {
+            if ("WebSocket" in window) {
+                ws = new WebSocket("ws://localhost:8080/echo/echoWs");
+
+                ws.onopen = function() {
+                    alert("web socket is connected");
+                    console.log("web socket is connected");
+                };
+
+                ws.onmessage = function(evt) {
+                    var recieved_msg = evt.data;
+                    console.log("Message is recieved... " + recieved_msg);
+                };
+
+                ws.onclose = function() {
+                    alert("Web Socket is closed");
+                    console.log("Web Socket is closed");
+                };
+            } else {
+                alert("web socket is not supported by your browser");
+                console.log("web socket is not supported by your browser");
+            }
+        }
+
+        function WebSocketSend() {
+            ws.send("hello world!!!!");
+        }
+
+        function WebSocketClose() {
+            ws.close();
+        }
+    </script>
+</head>
+<body>
+<!-- websocket API-->
+
+<a href="javascript:WebSocketOpen()">Open WebSocket</a>
+
+<a href="javascript:WebSocketSend()">Send Message</a>
+
+<a href="javascript:WebSocketClose()">Close WebSocket</a>
+</body>
+</html>

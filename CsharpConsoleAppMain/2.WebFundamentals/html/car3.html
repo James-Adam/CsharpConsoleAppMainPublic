@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="eng">
+<head>
+    <meta charset="utf-8"/>
+    <title>About</title>
+    <script type="text/javascript">
+        function loadCars(ID) {
+            var imghttp = new XMLHttpRequest();
+            imghttp.onreadystatechange = function() {
+                if (imghttp.readyState == 4 && imghttp.status == 200) {
+                    document.getElementById("cars").innerHTML = imghttp.responseText;
+                }
+            };
+
+            if (ID = 'car1') {
+                imghttp.open("GET", "car1.html", true);
+            } else if (ID = 'car2') {
+                imghttp.open("GET", "car2.html", true);
+            }
+            imghttp.send();
+        }
+    </script>
+</head>
+
+<body>
+<div id="cars"></div>
+
+<button id="car1" onclick="loadCars(this.id)">car 1</button>
+<button id="car2" onclick="loadCars(this.id)">car 2</button>
+
+go to <a href="about.html">about Page</a>
+</body>
+</html>

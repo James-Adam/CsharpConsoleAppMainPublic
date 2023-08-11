@@ -1,0 +1,23 @@
+﻿@{
+ <!--Security authentication login-->
+ <!--WebSecurity.RequireAuthenticatedUser();-->
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Title goes here";
+    //Layout = "Your Layout Page goes here";
+
+    Student newStudent = new Student()
+    {
+        FirstName = "Chris",
+        LastName = "Brown",
+        PhoneNumber = "555-6612",
+        Address = "435 Jan Smuts Avenue"
+    };
+}
+
+<div>
+    <h5>Student Details</h5>
+    @newStudent.FirstName <br />
+    @newStudent.LastName <br />
+    @newStudent.PhoneNumber <br />
+    @newStudent.Address <br />
+</div>

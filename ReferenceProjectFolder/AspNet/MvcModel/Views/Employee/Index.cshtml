@@ -1,0 +1,47 @@
+﻿@model MvcModel.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Employee Information</title>
+</head>
+<body>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div>
+    <h1>Employee: @Model.Name</h1>
+    @using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+    {
+        @Html.LabelFor(model => model.Id)
+        @Html.EditorFor(model => model.Id)
+        @Html.ValidationMessageFor(model => model.Id)
+        <p/>
+
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+        <p/>
+
+        @Html.LabelFor(model => model.Email)
+        @Html.EditorFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+        <p/>
+
+        @Html.LabelFor(model => model.BirthdDate)
+        @Html.EditorFor(model => model.BirthdDate)
+        @Html.ValidationMessageFor(model => model.BirthdDate)
+        <p/>
+
+        <input type="submit"/>
+    }
+</div>
+</body>
+</html>

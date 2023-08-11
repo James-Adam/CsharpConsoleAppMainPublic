@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>
+    </title>
+</head>
+<body>
+<p id="demo2"></p>
+<hr>
+
+<!-- programm flow-->
+
+<p id="demo"></p>
+
+<script>
+
+    var seasons = ["Spring", "Summer", "Fall", "Winter"];
+
+    var text = "";
+
+    for (i = 0; i < seasons.length; i++) {
+        /*if(seasons[i].startsWith("S") /*=== "Spring"*/ /*) {
+                text += seasons[i] + "<br>"
+            } else {
+                text += "<strike>" + seasons[i] + "</strike><br>"
+            }*/
+
+        //switch statement. have removed the if statement above
+
+        switch (seasons[i]) {
+        case "Spring":
+            text += "season 1 <br />";
+            break;
+        case "Summer":
+            text += "season 2 <br />";
+            break;
+        case "Fall":
+            text += "season 3 <br />";
+            break;
+        default:
+            text += "Season 4 <br />";
+
+        }
+    }
+
+    document.getElementById("demo").innerHTML = text;
+
+    //raise event handling script
+
+    function doSth(p) { p.innerHTML = 'Hello World'; };
+
+    //exeption handling
+    function check() {
+        try {
+            if (!document.getElementById("input").value) {
+                throw "You did not enter anything";
+            }
+            var value = document.getElementById("input").value;
+            if (value > 5) {
+                throw "too large";
+
+            } else if (value < 0) {
+                throw "too small";
+            } else {
+                document.getElementById("demo1").innerHTML = "you entered " + value;
+            }
+        } catch (err) {
+            document.getElementById("demo1").innerHTML = err;
+        } finally {
+            document.getElementById("done").innerHTML = "finished";
+        }
+    }
+    //<!-- xmlHTTP request-->
+</script>
+
+<!-- raise event handling-->
+
+<p onclick="this.innerHTML = 'Hello-World'">Click me</p>
+<p onclick=" doSth(this)">Click me.</p>
+<P onclick="(function(p) { p.innerHTML = 'Hello World.'; })(this)">Click-Me</P>
+<br>
+
+<!--exeption handling-->
+<input type="text" id="input"/>
+<button id="check" onclick="check();">Check</button>
+<p id="demo1"></p>
+<p id="done"></p>
+</body>
+</html>

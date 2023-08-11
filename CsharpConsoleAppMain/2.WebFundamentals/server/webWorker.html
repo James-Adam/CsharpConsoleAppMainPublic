@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>HTML5 Template</title>
+</head>
+<body>
+<p>Time: <output id="result1"></output></p>
+<button onclick="startWorker1()">Start Worker1</button>
+<button onclick="sendMessage1()">Send Message</button>
+<button onclick="stopWorker1()">Stop Worker1</button>
+<script>
+    var w1;
+
+    function startWorker1() {
+        if (typeof (worker) !== "undefined") {
+            if (typeof (w1) == "undefined") {
+                w1 = new Worker("../test/webWorker/demo_worker.js");
+            }
+
+            w1.onmessage = function(evt) {
+                document.getElementById("result1").innerHTML = evt.data;
+            };
+        } else {
+            alert("sorry your browser does not support web worker");
+        }
+    }
+
+    function sendMessage1() {
+        w1.postMessage(10000);
+    }
+
+    function stopWorker1() {
+        w1.terminate();
+        w1 = undefined;
+    }
+
+    var w2;
+
+    function startWorker2() {
+        if (typeof (SharedWorker) !== "undefined") {
+            if (typeof(w2) == "undefined") {
+                w2 = new SharedWorker("../test/webWorker/shared_demo_worker.js");
+                w2.port.addEventListener("message",
+                    function(evt) {
+                        document.getElementById("result2").innerHTML = evt.data;
+                    },
+                    false);
+                w2.port.start();
+            }
+        } else {
+            alert("sorry your browser does not support Shared web worker");
+        }
+    }
+
+    function sendMessage2() {
+        w2.port.postMessage(10000);
+    }
+
+    function stopWorker2() {
+        w2.port.close();
+        w2 = undefined;
+    }
+
+    // improv with websockets
+    function startWebWorker() {
+        for (c = 1; c <= 5; c++) {
+            var worker = new Worker("busy_workers.js");
+            worker.onmessage = function(evt) {
+                console.log('done' + evt.data);
+                document.getElementById('wResult').innerHTML = 'done';
+            };
+            worker.portMessage(c);
+        }
+    }
+
+    function startRegular() {
+        for (c = 1; c <= 5; c++) {
+            sleep(1000);
+            console.log('done' + c);
+        }
+        document.getElementById('rResult').innerHTML = 'done';
+    }
+
+    function sleep(ms) {
+        var date = new Date();
+        var currentDate = null;
+        do {
+            currentDate = new Date();
+
+        } while (currentDate - date < ms);
+    }
+</script>
+
+<p>Time: <output id="result2"></output></p>
+<button onclick="startWorker2()">Start Worker2</button>
+<button onclick="sendMessage2()">Send Message</button>
+<button onclick="stopWorker2()">Stop Worker2</button>
+
+<!--improv with websockets-->
+<button onclick="startRegular()">Start Regular Process</button>
+<p>Regular Task: <output id="rResult"></output></p>
+
+<button onclick="startWebWorker()">Start Web Worker</button>
+<p>WebWorker Task: <output id="wResult"></output></p>
+</body>
+</html>

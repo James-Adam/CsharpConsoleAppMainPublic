@@ -1,0 +1,131 @@
+﻿@using AuthenticatedSchoolSystem.Back_End.OptimizationEncryption
+<!DOCTYPE html>
+@{
+    var controller = ViewContext.RouteData.Values["controller"];
+    var action = ViewContext.RouteData.Values["action"];
+    var id = ViewContext.RouteData.Values["id"];
+    var actionRequest = ViewContext.HttpContext.Request.HttpMethod;
+}
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="#">Navbar</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        MENU
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #282828">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="d-grid gap-2 col-6 mx-1">
+
+                                <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Classes")'" style="width=">Classes</button>
+                                <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Exams")'">Exams</button>
+
+                                <button type="button" class="btn btn-secondary" onclick="location.href = '@Url.Action("Index", "Student")'">Students</button>
+                                <button type="button" class="btn btn-secondary" onclick="location.href = '@Url.Action("Index", "StudentAttendances")'">StudentAttendances</button>
+
+                                <button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("Index", "Teachers")'">Teachers</button>
+                                <button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("Index", "TeacherAttendances")'">TeacherAttendances</button>
+
+                                <button type="button" class="btn btn-warning" onclick="location.href = '@Url.Action("Index", "Subjects")'">Subjects</button>
+                                <button type="button" class="btn btn-warning" onclick="location.href = '@Url.Action("Index", "TeacherSubjects")'">TeacherSubjects</button>
+
+                                @if (User.IsInRole("SuperUser"))
+                                {
+                                    <button type="button" class="btn btn-danger" onclick="location.href = '@Url.Action("Index", "Expenses")'">Expenses</button>
+                                    <button type="button" class="btn btn-danger" onclick="location.href = '@Url.Action("Index", "Fees")'">Fees</button>
+                                }
+                            </div>
+                        }
+                    </ul>
+                </li>
+
+                <li>
+                    <button type="button" class="btn btn-outline-primary" onclick="location.href =  " ">
+                        @Html.ActionLink("Index", "Index", "Home")
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-outline-primary" onclick="location.href =  " ">
+                        @Html.MyActionLink("MyCustomURL", "", "Contact")
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-outline-primary" onclick="location.href =  " ">
+                        @Html.MyHashActionLink("MyCustomHash", "About", "Home")
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-outline-primary" onclick="location.href =  " ">
+                        @Html.ActionLink("Employees", "Main", "Employee")
+                    </button>
+                </li>
+
+                <li class="nav-item">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Index", "Role")'">View Role</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("Create", "Role")'">Create Role</button>
+                            <button type="button" class="btn btn-outline-primary" onclick="location.href = '@Url.Action("RegisterRole", "Account")'">Assign Role</button>
+                        }
+                    }
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<!--obtaining mvc controller route data-->
+<div>
+    <h4>Controller: @controller | Action: @action | ID: @id | Action: @actionRequest</h4>
+</div>
+
+<div>
+    <h2>Filter Messages</h2>
+    <h2>@ViewBag.MyExceptionMessage1</h2>
+    <h2>@ViewBag.MyAuthorizationMessage1</h2>
+    <h2>@ViewBag.MyActionFilterMessage1</h2>
+    <h2>@ViewBag.MyActionFilterMessage2</h2>
+    <h2>@ViewBag.MyActionFilterMessage3</h2>
+    <h2>@ViewBag.MyActionFilterMessage4</h2>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", false)
+</body>
+</html>

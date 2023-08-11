@@ -1,0 +1,75 @@
+﻿@using AuthenticatedSchoolSystem.Back_End.myResource
+<!--//Creating a Javascript Resource // globalization-->
+<asp:ScriptManager id="ScriptManager1" EnableScriptLocalization="true" runat="server">
+    <Scripts>
+        <asp:ScriptReference Path="C:\inetpub\wwwroot\CsharpConsoleAppMainSolution\NetFramework\New folder\AuthenticatedSchoolSystemSolution\AuthenticatedSchoolSystem\Back_End\JavaScript\myLocalization.js" ResiurceUICulture="es-ES"/>
+    </Scripts>
+</asp:ScriptManager>
+
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<script type="text/javascript">
+    function clickme() {
+        $("#TextArea1").text("@Html.Raw(Resource1.String1)");
+    }
+</script>
+
+<div>
+    <textarea id="TextArea1" rows="8" cols="40">@ViewData["myOutput"]</textarea>
+    <input type="button" value="Click Me" onclick="javascript: clickme();"/>
+</div>
+
+@*@{ HttpCookie c = Request.Cookies["myCookie"];
+        if (c != null)
+        {
+            Response.Write(c.Value);
+        }
+    };
+    @{
+        System.Collections.Specialized.NameValueCollection nvc = Request.QueryString;
+        string val = nvc["qs"];
+        if (!String.IsNullOrEmpty(val))
+        {
+            Response.Write(val);
+        }
+    }
+
+    <div>
+        @{
+            HttpCookie myCookie = Request.Cookies["SportCookie"];
+        }
+        Your favorite sport: @myCookie.Value
+    </div>*@
+<p>&nbsp;</p>
+
+<address>
+    One Microsoft Way<br/>
+    Redmond, WA 98052-6399<br/>
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br/>
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+<!--Consuming aservice from a web browser-->
+<script>
+    function pressme() {
+        $.ajax({
+            url: 'http://api.geonames.org/citiesJSON?north=44,.`&south=-9.9&east=22.4&west=55.2&lang=de&username=demo',
+            dataType: 'JSON',
+            success: function(data) {
+                alert("success");
+            },
+            error: function(result) {
+                alert("error");
+            }
+        });
+    }
+</script>

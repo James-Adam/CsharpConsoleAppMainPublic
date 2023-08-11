@@ -1,0 +1,6 @@
+Your Text Listener
+System.Collections.Specialized.StringDictionary
+System.Diagnostics.TextWriterTraceListener
+Total Event Log
+System.Collections.Specialized.StringDictionary
+System.Diagnostics.EventLogTraceListener

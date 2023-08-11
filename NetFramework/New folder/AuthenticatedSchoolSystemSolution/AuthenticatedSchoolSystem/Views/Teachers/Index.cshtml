@@ -1,0 +1,184 @@
+﻿@model IEnumerable<AuthenticatedSchoolSystem.Models.SchoolSystem.Teacher>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })
+            </td>
+        </tr>
+    }
+</table>
+
+@*<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+        <div class="row flex-lg-nowrap">
+            <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+                <div class="card p-3">
+                    <div class="e-navlist e-navlist--active-bg">
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link px-2 active" href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-crud-users" target="__blank"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
+                            <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page" target="__blank"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        <div class="e-tabs mb-3 px-3">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link active" href="#">Users</a></li>
+          </ul>
+        </div>
+
+        <div class="row flex-lg-nowrap">
+          <div class="col mb-3">
+            <div class="e-panel card">
+              <div class="card-body">
+                <div class="card-title">
+                  <h6 class="mr-2"><span>Users</span><small class="px-1">Be a wise leader</small></h6>
+                </div>
+                <div class="e-table">
+                  <div class="table-responsive table-lg mt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th class="align-top">
+                                  <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
+                                      <input type="checkbox" class="custom-control-input" id="all-items">
+                                      <label class="custom-control-label" for="all-items"></label>
+                                  </div>
+                              </th>
+
+                              <th class="max-width"> @Html.DisplayNameFor(model => model.Name)</th>
+                              <th class="sortable">@Html.DisplayNameFor(model => model.DOB)</th>
+                              <th class="sortable">@Html.DisplayNameFor(model => model.Gender)</th>
+                              <th class="sortable">@Html.DisplayNameFor(model => model.Mobile)</th>
+                              <th class="sortable">@Html.DisplayNameFor(model => model.Email)</th>
+                              <th class="sortable">@Html.DisplayNameFor(model => model.Address)</th>
+                              <th class="sortable">@Html.DisplayNameFor(model => model.Password)</th>
+
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach (var item in Model)
+                          {
+                              <tr>
+                                  <td class="align-middle">
+                                      <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
+                                          <input type="checkbox" class="custom-control-input" id="item-1">
+                                          <label class="custom-control-label" for="item-1"></label>
+                                      </div>
+                                  </td>
+
+                                  <td class="text-nowrap align-middle">@Html.DisplayFor(modelItem => item.Name)</td>
+                                  <td class="text-nowrap align-middle"><span>@Html.DisplayFor(modelItem => item.DOB)</span></td>
+                                  <td class="text-nowrap align-middle"><span>@Html.DisplayFor(modelItem => item.Gender)</span></td>
+                                  <td class="text-nowrap align-middle"><span>@Html.DisplayFor(modelItem => item.Mobile)</span></td>
+                                  <td class="text-nowrap align-middle"><span>@Html.DisplayFor(modelItem => item.Email)</span></td>
+                                  <td class="text-nowrap align-middle"><span>@Html.DisplayFor(modelItem => item.Address)</span></td>
+                                  <td class="text-nowrap align-middle"><span>@Html.DisplayFor(modelItem => item.Password)</span></td>
+
+                                  <td class="text-center align-middle">
+                                      <div class="btn-group align-top">
+                                          <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal"> @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId }) </button>
+                                          <button class="btn btn-sm btn-outline-secondary badge" type="button"><i class="fa fa-trash">@Html.ActionLink("Delete", "Delete", new { id = item.TeacherId })</i></button>
+                                      </div>
+                                  </td>
+                              </tr>
+                          }
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="text-center px-xl-3">
+                    <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">@Html.ActionLink("Create New", "Create")</button>
+                </div>
+                <hr class="my-3">
+
+                <div>
+                  <div class="form-group">
+                    <label>Date from - to:</label>
+                    <div>
+                      <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Search by Name:</label>
+                    <div><input class="form-control w-100" type="text" placeholder="Name" value=""></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>*@
